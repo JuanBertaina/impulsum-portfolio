@@ -24,7 +24,8 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helve
 .socials a:hover .icon{color:var(--text);transform:translateY(-1px)}
 .lang-switch{display:inline-flex;gap:.25rem;padding:6px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);align-items:center}
 .lang-switch{position:fixed;right:1rem;top:1rem;z-index:1300}
-.flag-icon{width:18px;height:12px;display:inline-block;margin-right:.45rem;vertical-align:middle;border-radius:2px;object-fit:cover}
+.flag-icon{height:16px;display:inline-block;margin-right:.45rem;vertical-align:middle;border-radius:2px;object-fit:cover}
+.flag-icon svg{height:16px;width:auto;display:inline-block}
 .lang-btn{color:var(--muted);background:transparent;border:none;padding:.28rem .5rem;border-radius:6px;cursor:pointer;transition:background .2s ease,color .2s ease;display:inline-flex;align-items:center;font-size:.95rem}
 .lang-btn .lang-code{opacity:.7;font-size:.85em;margin-left:.25rem}
 .lang-btn:hover{color:var(--text)}
@@ -48,6 +49,6 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helve
 
 @media (max-width:420px){
 	.lang-switch{right:0.6rem;top:0.6rem}
-	.flag-icon{width:14px;height:10px;margin-right:.35rem}
+	.flag-icon{height:14px;margin-right:.35rem}
 	.lang-btn{padding:.22rem .4rem;font-size:.92rem}
 }
