@@ -22,8 +22,10 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helve
 .icon{width:22px;height:22px;color:var(--muted);transition:color .2s ease,transform .1s ease}
 .socials a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,.03);text-decoration:none}
 .socials a:hover .icon{color:var(--text);transform:translateY(-1px)}
-.lang-switch{display:inline-flex;gap:.25rem;padding:2px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--border)}
-.lang-btn{color:var(--muted);background:transparent;border:none;padding:.35rem .6rem;border-radius:8px;cursor:pointer;transition:background .2s ease,color .2s ease}
+.lang-switch{display:inline-flex;gap:.25rem;padding:6px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);align-items:center}
+.lang-switch{position:fixed;right:1rem;top:1rem;z-index:1300}
+.flag-icon{width:20px;height:14px;display:inline-block;margin-right:.5rem;vertical-align:middle;border-radius:2px;object-fit:cover}
+.lang-btn{color:var(--muted);background:transparent;border:none;padding:.45rem .7rem;border-radius:8px;cursor:pointer;transition:background .2s ease,color .2s ease;display:inline-flex;align-items:center}
 .lang-btn .lang-code{opacity:.7;font-size:.85em;margin-left:.25rem}
 .lang-btn:hover{color:var(--text)}
 .lang-btn.active{color:var(--text);background:rgba(76,141,255,.15);outline:1px solid rgba(76,141,255,.35)}
@@ -39,4 +41,13 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helve
 	/* Fallback visible max height when JS is disabled */
 	.nav-list.open{max-height:900px}
 	.nav-actions{justify-content:flex-end}
+
+	/* Avoid overlap with hamburger button */
+	.lang-switch{right:3.6rem}
+}
+
+@media (max-width:420px){
+  .lang-switch{right:0.6rem;top:0.6rem}
+  .flag-icon{width:16px;height:12px;margin-right:.4rem}
+  .lang-btn{padding:.35rem .5rem}
 }

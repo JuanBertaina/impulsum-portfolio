@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple Argentina flag: three horizontal bands with sun -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2">
+  <rect width="3" height="2" fill="#6ECFF6"/>
+  <rect y="0.666" width="3" height="0.666" fill="#fff"/>
+  <circle cx="1.5" cy="1" r="0.2" fill="#FCD116"/>
+</svg>
