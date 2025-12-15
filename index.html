@@ -26,7 +26,7 @@
       <!-- Navegación principal -->
       <nav class="main-nav" aria-label="Navegación principal">
         <ul id="primary-navigation" class="nav-list">
-          <li><a href="#about">Sobre nosotros</a></li>
+          <li><a href="#propuesta">Sobre nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
           <li><a href="#solutions">Soluciones</a></li>
           <li><a href="#technologies">Tecnologías</a></li>
@@ -69,10 +69,112 @@
   </header>
 
   <main class="content">
-    <section id="about" data-i18n-key="about.title">
-      <h1>Bienvenido a Impulsum</h1>
-      <p>Cabecera con navegación, redes y selector de idioma, lista para tu proyecto.</p>
+    <!-- Hero / Encabezado principal -->
+    <section id="hero" class="hero" aria-label="Hero">
+      <div class="hero-inner">
+        <h1>Operá con inteligencia.</h1>
+        <p class="lead">Automatizamos procesos, unificamos datos y entrenamos equipos para decidir mejor.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary cta-schedule">Agendar diagnóstico</a>
+          <a href="#metodologia" class="btn btn-ghost cta-demo">Ver cómo funciona</a>
+        </div>
+      </div>
     </section>
+
+    <!-- Propuesta de valor -->
+    <section id="propuesta" class="proposal">
+      <h2>Propuesta de valor</h2>
+      <p>Impulsum acelera la modernización de tu negocio integrando datos y automatización en la operación diaria, para decisiones confiables y resultados medibles. No vendemos tecnología: entregamos eficiencia, innovación y equipos listos para liderar el futuro.</p>
+    </section>
+
+    <!-- Servicios -->
+    <section id="services" class="services">
+      <h2>Servicios</h2>
+      <div class="service-grid">
+        <article class="service">
+          <h3>Impulsum Advisory</h3>
+          <p>Estrategia, roadmap y gobierno para transformar tu operación.</p>
+        </article>
+        <article class="service">
+          <h3>Impulsum Agents</h3>
+          <p>Agentes de IA personalizados que resuelven problemas reales y mejoran la productividad.</p>
+        </article>
+        <article class="service">
+          <h3>Impulsum Data</h3>
+          <p>ETL, Data Warehouse y dashboards con Power BI para decisiones basadas en evidencia.</p>
+        </article>
+        <article class="service">
+          <h3>Impulsum Automate</h3>
+          <p>Orquestación de procesos con Power Automate y conectores para reducir tiempos y errores.</p>
+        </article>
+        <article class="service">
+          <h3>Impulsum Apps</h3>
+          <p>Aplicaciones internas con Power Apps, Dataverse y Power Pages para digitalizar tu operación.</p>
+        </article>
+        <article class="service">
+          <h3>Impulsum Academy</h3>
+          <p>Programas de capacitación y change management para equipos preparados para el futuro.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Prueba social / Casos de éxito -->
+    <section id="casos" class="cases">
+      <h2>Casos de éxito</h2>
+      <ul class="cases-list">
+        <li>Reducción de tiempos de ciclo y retrabajo con flujos automatizados.</li>
+        <li>Tableros y métricas operativas unificadas (decisiones más rápidas).</li>
+        <li>Capacitación con adopción efectiva (equipos listos para usar IA).</li>
+        <li>Arquitecturas escalables y gobernadas (seguridad y cumplimiento).</li>
+      </ul>
+    </section>
+
+    <!-- Metodología -->
+    <section id="metodologia" class="method">
+      <h2>Metodología — IMPULSUM Framework</h2>
+      <p class="method-steps">Insight · Model · Pilot · Unify · Launch · Scale · Upskill · Measure</p>
+      <p>Descubrimos oportunidades, diseñamos soluciones, probamos impacto y medimos resultados.</p>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact" class="contact">
+      <h2>¿Listo para el próximo salto digital?</h2>
+      <p>Completa el formulario o escribinos por WhatsApp. Córdoba, Argentina · Remote · Global Reach</p>
+
+      <div class="contact-info" aria-hidden="false">
+        <a href="mailto:contacto@impulsum.com.ar" class="contact-link">contacto@impulsum.com.ar</a>
+        <a href="https://wa.me/5493572667519" class="contact-link" target="_blank" rel="noopener noreferrer">WhatsApp +54 9 351 266-7519</a>
+      </div>
+
+      <form id="contact-form" class="contact-form" aria-label="Formulario de contacto">
+        <label>
+          Nombre
+          <input type="text" name="name" required placeholder="Tu nombre" />
+        </label>
+        <label>
+          Empresa
+          <input type="text" name="company" placeholder="Nombre de la empresa" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required placeholder="email@ejemplo.com" />
+        </label>
+        <label>
+          Mensaje
+          <textarea name="message" rows="4" placeholder="Contanos brevemente qué necesitás"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <a class="btn btn-ghost whatsapp-btn" href="https://wa.me/5493572667519" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+        <p id="contact-feedback" class="feedback" role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+
+    <!-- Footer / Boilerplate -->
+    <footer class="site-footer">
+      <p>Impulsum es una firma de consultoría tecnológica que acelera la transformación de negocios mediante datos y automatización. Con base en Córdoba y alcance internacional, acompañamos a empresas que buscan eficiencia, control y escalabilidad. <a href="mailto:contacto@impulsum.com.ar" class="contact-link">contacto@impulsum.com.ar</a></p>
+    </footer>
   </main>
 
   <script src="script.js"></script>

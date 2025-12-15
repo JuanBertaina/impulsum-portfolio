@@ -106,3 +106,54 @@ function updateActiveNav() {
 }
 window.addEventListener('hashchange', updateActiveNav);
 updateActiveNav();
+
+// Smooth scroll for internal anchors (CTAs)
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        history.replaceState(null, '', href);
+      }
+    }
+  });
+});
+
+// Contact form handling: open mail client with prefilled message
+const contactForm = document.getElementById('contact-form');
+const feedback = document.getElementById('contact-feedback');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(contactForm);
+    const name = fd.get('name') || '';
+    const company = fd.get('company') || '';
+    const email = fd.get('email') || '';
+    const message = fd.get('message') || '';
+    const subject = encodeURIComponent('Solicitud de diagnóstico - Impulsum');
+    const body = encodeURIComponent(`Nombre: ${name}\nEmpresa: ${company}\nEmail: ${email}\n\nMensaje:\n${message}`);
+    const mailto = `mailto:contacto@impulsum.com.ar?subject=${subject}&body=${body}`;
+    if (feedback) { feedback.hidden = false; feedback.textContent = 'Abriendo tu cliente de correo...'; }
+    window.location.href = mailto;
+    setTimeout(() => {
+      if (feedback) feedback.textContent = 'Si no se abrió el correo, podés escribirnos por WhatsApp.';
+    }, 1500);
+  });
+
+  const waBtn = document.querySelector('.whatsapp-btn');
+  if (waBtn) {
+    waBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const fd = new FormData(contactForm);
+      const name = fd.get('name') || '';
+      const company = fd.get('company') || '';
+      const message = fd.get('message') || '';
+      const text = encodeURIComponent(`Hola, soy ${name}${company ? ' de ' + company : ''}. ${message}`);
+      const url = `https://wa.me/5493572667519?text=${text}`;
+      window.open(url, '_blank');
+    });
+  }
+}
