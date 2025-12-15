@@ -55,10 +55,7 @@
       "route": "/technologies",
       "rewrite": "/index.html"
     },
-    {
-      "route": "/culture",
-      "rewrite": "/index.html"
-    },
+
     {
       "route": "/clients",
       "rewrite": "/index.html"

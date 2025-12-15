@@ -78,15 +78,18 @@ function applyLanguage(lang) {
   const p = document.querySelector('main p');
   if (lang === 'en') {
     h1.textContent = 'Welcome to Impulsum';
-    p.textContent = 'Header with navigation, social links and language switcher, ready for your project.';
-    const labelsEN = ['About Us', 'Services', 'Solutions', 'Technologies', 'Culture', 'Clients', 'Blog', 'Contact'];
+    p.textContent = 'We automate processes, unify data and train teams to make better decisions.';
+    const labelsEN = ['About Us', 'Services', 'Solutions', 'Technologies', 'Clients', 'Blog', 'Contact'];
     document.querySelectorAll('.nav-list a').forEach((a, i) => a.textContent = labelsEN[i]);
   } else {
     h1.textContent = 'Bienvenido a Impulsum';
-    p.textContent = 'Cabecera con navegación, redes y selector de idioma, lista para tu proyecto.';
-    const labelsES = ['Sobre nosotros', 'Servicios', 'Soluciones', 'Tecnologías', 'Cultura', 'Clientes', 'Blog', 'Contacto'];
+    p.textContent = 'Automatizamos procesos, unificamos datos y entrenamos equipos para decidir mejor.';
+    const labelsES = ['Sobre nosotros', 'Servicios', 'Soluciones', 'Tecnologías', 'Clientes', 'Blog', 'Contacto'];
     document.querySelectorAll('.nav-list a').forEach((a, i) => a.textContent = labelsES[i]);
   }
+
+  // Re-check nav overflow after labels change
+  setTimeout(checkNavOverflow, 60);
 }
 
 langButtons.forEach(btn => {
@@ -98,7 +101,7 @@ const initialBtn = document.querySelector('.lang-btn.active');
 const initialLang = initialBtn ? initialBtn.dataset.lang : (document.documentElement.getAttribute('lang') || 'es');
 applyLanguage(initialLang);
 function updateActiveNav() {
-  const hash = window.location.hash || '#about';
+  const hash = window.location.hash || '#propuesta';
   document.querySelectorAll('.nav-list a').forEach(a => {
     const isCurrent = a.getAttribute('href') === hash;
     if (isCurrent) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
@@ -121,6 +124,60 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+// Nav overflow -> collapse to hamburger
+function checkNavOverflow() {
+  if (!toggleBtn || !navList) return;
+  // determine if nav-list overflows its visible width
+  const isOverflowing = navList.scrollWidth > navList.clientWidth;
+  if (isOverflowing) {
+    navList.classList.add('collapsed');
+    // show toggle so user can open it
+    toggleBtn.style.display = 'inline-block';
+    // start closed
+    navList.classList.remove('open');
+    navList.style.maxHeight = '0';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  } else {
+    // not overflowing: ensure normal horizontal layout
+    navList.classList.remove('collapsed');
+    navList.classList.remove('open');
+    navList.style.maxHeight = '';
+    // hide toggle except on small screens where CSS shows it
+    if (!window.matchMedia('(max-width: 760px)').matches) toggleBtn.style.display = 'none';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+}
+
+// wire check on resize and load
+window.addEventListener('resize', checkNavOverflow);
+window.addEventListener('load', checkNavOverflow);
+window.addEventListener('orientationchange', checkNavOverflow);
+
+
+
+// enhance openNav / closeNav to support collapsed mode
+function openNav() {
+  navList.classList.add('open');
+  toggleBtn.setAttribute('aria-expanded', 'true');
+  // Set explicit height for smooth animation using content height when collapsed or mobile
+  if (navList.classList.contains('collapsed') || window.matchMedia('(max-width: 760px)').matches) {
+    navList.style.maxHeight = navList.scrollHeight + 'px';
+  } else {
+    navList.style.maxHeight = '';
+  }
+}
+function closeNav() {
+  // Animate to zero height then remove open class after transition
+  if (navList.classList.contains('collapsed') || window.matchMedia('(max-width: 760px)').matches) {
+    navList.style.maxHeight = '0';
+    const onEnd = () => { navList.classList.remove('open'); navList.removeEventListener('transitionend', onEnd); };
+    navList.addEventListener('transitionend', onEnd);
+  } else {
+    navList.classList.remove('open');
+  }
+  toggleBtn.setAttribute('aria-expanded', 'false');
+}
 
 // Contact form handling: open mail client with prefilled message
 const contactForm = document.getElementById('contact-form');
