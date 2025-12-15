@@ -9,7 +9,11 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helve
 .nav-toggle{display:none;justify-self:end;border:none;background:transparent;cursor:pointer}
 .nav-toggle-bar{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:transform .2s ease}
 .main-nav{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem}
-.nav-list{display:flex;flex-wrap:wrap;gap:.5rem .75rem;list-style:none;margin:0;padding:0}
+.nav-list{display:flex;flex-wrap:nowrap;gap:.5rem .75rem;list-style:none;margin:0;padding:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav-list a{white-space:nowrap}
+/* Hide horizontal scrollbar but keep scrollable on touch devices */
+.nav-list{scrollbar-width:none;-ms-overflow-style:none}
+.nav-list::-webkit-scrollbar{display:none}
 .nav-list a{color:var(--muted);text-decoration:none;padding:.5rem .75rem;border-radius:8px;transition:background .2s ease,color .2s ease}
 .nav-list a:hover,.nav-list a:focus{background:var(--hover);color:var(--text)}
 .nav-list a[aria-current="page"]{color:var(--text);background:rgba(76,141,255,.18);border:1px solid rgba(76,141,255,.3)}
@@ -27,4 +31,12 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helve
 .content h1{margin:0 0 .5rem}
 .content p{color:var(--muted)}
 @media (max-width:960px){.nav-container{grid-template-columns:auto auto 1fr}}
-@media (max-width:760px){.nav-toggle{display:inline-block}.main-nav{grid-template-columns:1fr;gap:.5rem}.nav-list{display:none;flex-direction:column;padding:.5rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px}.nav-list.open{display:flex}.nav-actions{justify-content:flex-end}}
+@media (max-width:760px){
+	.nav-toggle{display:inline-block}
+	.main-nav{grid-template-columns:1fr;gap:.5rem}
+	/* Make nav a vertical collapsible region with smooth slide animation */
+	.nav-list{display:flex;flex-direction:column;padding:.5rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;max-height:0;overflow:hidden;transition:max-height .28s ease}
+	/* Fallback visible max height when JS is disabled */
+	.nav-list.open{max-height:900px}
+	.nav-actions{justify-content:flex-end}
+}
