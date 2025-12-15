@@ -1,0 +1,78 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/api/*",
+      "/.github/*",
+      "/images/*",
+      "/assets/*"
+    ]
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html"
+    }
+  },
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), camera=(), microphone=(), payment=()"
+  },
+  "routes": [
+    {
+      "route": "/styles.css",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/script.js",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/Icon.png",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/about",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/services",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/solutions",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/technologies",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/culture",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/clients",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/blog",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/contact",
+      "rewrite": "/index.html"
+    }
+  ],
+  "mimeTypes": {
+    "svg": "image/svg+xml"
+  }
+}
