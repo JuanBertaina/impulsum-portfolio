@@ -39,6 +39,20 @@ export default function HomePage() {
     return () => window.removeEventListener('hashchange', syncHash);
   }, []);
 
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll('.reveal'));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.25 }
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   const scrollTo = (targetId: SectionId) => {
     const target = document.getElementById(targetId);
     if (target) {

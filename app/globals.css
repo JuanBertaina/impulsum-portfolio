@@ -145,6 +145,92 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.impulsum-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(14, 102, 255, 0.3), rgba(0, 163, 140, 0.28));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  color: #fff;
+}
+
+.impulsum-letters {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(54px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.6rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.impulsum-letter {
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(140deg, rgba(14, 102, 255, 0.4), rgba(0, 163, 140, 0.35));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.impulsum-letter.active {
+  box-shadow: 0 10px 30px rgba(14, 102, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.impulsum-letter:not(.active) {
+  opacity: 0.2;
+  transform: scale(0.9);
+}
+
+.impulsum-tooltip {
+  position: absolute;
+  bottom: -62px;
+  min-width: 220px;
+  max-width: 420px;
+  transform: translateX(-50%);
+  background: rgba(11, 31, 51, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 0.6rem 0.8rem;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  transition: left 0.2s ease, bottom 0.2s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .impulsum-letters {
+    grid-template-columns: repeat(4, minmax(54px, 1fr));
+  }
+
+  .impulsum-tooltip {
+    bottom: -80px;
+  }
+}
+
 .contact-section .contact-card {
   background: rgba(0, 163, 140, 0.06);
 }

@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import {
   ActionIcon,
-  Badge,
   Avatar,
+  Badge,
   Button,
   Card,
   Container,
@@ -23,6 +23,7 @@ import {
   Title
 } from '@mantine/core';
 import { IconArrowRight, IconBrandWhatsapp, IconCheck, IconSend, IconWorld } from '@tabler/icons-react';
+import { useState } from 'react';
 import { heroStats, socialLinks, technologyLogos, type Copy } from '../copy';
 
 type HeroProps = {
@@ -33,7 +34,7 @@ type HeroProps = {
 
 export function HeroSection({ text, onPrimary, onSecondary }: HeroProps) {
   return (
-    <Container size="xl" className="hero-shell" id="hero">
+    <Container size="xl" className="hero-shell reveal" id="hero">
       <Grid gutter="xl" align="center">
         <Grid.Col span={{ base: 12, md: 7 }}>
           <Stack gap="sm">
@@ -106,7 +107,7 @@ type SectionProps = { text: Copy };
 
 export function ValueSection({ text }: SectionProps) {
   return (
-    <Container size="xl" id="propuesta" className="section-shell">
+    <Container size="xl" id="propuesta" className="section-shell reveal">
       <Stack gap="sm">
         <Badge variant="light" color="indigo" size="lg" radius="md">
           {text.servicesIntro}
@@ -121,19 +122,10 @@ export function ValueSection({ text }: SectionProps) {
 }
 
 export function ServicesSection({ text }: SectionProps) {
+  const [activeLetter, setActiveLetter] = useState(0);
   const steps = text.method.steps.split('·').map((s) => s.trim()).filter(Boolean);
-  const impulsumAcronym = [
-    { label: 'I — Insight', detail: 'Detectamos oportunidades con datos y entrevistas.' },
-    { label: 'M — Model', detail: 'Diseñamos arquitectura, procesos y gobierno.' },
-    { label: 'P — Pilot', detail: 'Probamos impacto con un caso de alto valor.' },
-    { label: 'U — Unify', detail: 'Integramos datos, sistemas y flujos.' },
-    { label: 'L — Launch', detail: 'Llevamos la solución a producción.' },
-    { label: 'S — Scale', detail: 'Extendemos a más áreas con gobernanza.' },
-    { label: 'U — Upskill', detail: 'Entrenamos equipos y líderes.' },
-    { label: 'M — Measure', detail: 'Medimos impacto y optimizamos.' }
-  ];
   return (
-    <Container size="xl" id="services" className="section-shell">
+    <Container size="xl" id="services" className="section-shell reveal">
       <Group justify="space-between" align="flex-end" mb="md">
         <div>
           <Title order={2}>{text.nav.services}</Title>
@@ -182,16 +174,32 @@ export function ServicesSection({ text }: SectionProps) {
             </Text>
           </div>
         </Group>
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="sm" mt="sm">
-          {impulsumAcronym.map((item) => (
-            <Card key={item.label} padding="sm" radius="md" withBorder>
-              <Text fw={700}>{item.label}</Text>
-              <Text size="sm" c="dimmed">
-                {item.detail}
-              </Text>
-            </Card>
+        <div className="impulsum-letters">
+          {text.impulsumLetters.map((item, idx) => (
+            <button
+              key={item.letter + idx}
+              type="button"
+              className={`impulsum-letter${activeLetter === idx ? ' active' : ''}`}
+              onMouseEnter={() => setActiveLetter(idx)}
+              onFocus={() => setActiveLetter(idx)}
+            >
+              {item.letter}
+            </button>
           ))}
-        </SimpleGrid>
+          <div
+            className="impulsum-tooltip"
+            style={{
+              left: `${(activeLetter + 0.5) * (100 / text.impulsumLetters.length)}%`
+            }}
+          >
+            <Text fw={800} size="sm">
+              {text.impulsumLetters[activeLetter].title}
+            </Text>
+            <Text size="sm" c="dimmed">
+              {text.impulsumLetters[activeLetter].detail}
+            </Text>
+          </div>
+        </div>
       </Paper>
     </Container>
   );
@@ -199,7 +207,7 @@ export function ServicesSection({ text }: SectionProps) {
 
 export function SolutionsSection({ text }: SectionProps) {
   return (
-    <Container size="xl" id="solutions" className="section-shell">
+    <Container size="xl" id="solutions" className="section-shell reveal">
       <Group justify="space-between" align="flex-end" mb="md">
         <div>
           <Title order={2}>{text.nav.solutions}</Title>
@@ -240,7 +248,7 @@ export function SolutionsSection({ text }: SectionProps) {
 export function TechnologiesSection({ text }: SectionProps) {
   const repeated = [...technologyLogos, ...technologyLogos];
   return (
-    <Container size="xl" id="technologies" className="section-shell">
+    <Container size="xl" id="technologies" className="section-shell reveal">
       <Title order={2}>{text.nav.technologies}</Title>
       <Text c="dimmed" mb="md">
         {text.technologiesIntro}
@@ -265,7 +273,7 @@ export function TechnologiesSection({ text }: SectionProps) {
 
 export function ClientsSection({ text }: SectionProps) {
   return (
-    <Container size="xl" id="clients" className="section-shell">
+    <Container size="xl" id="clients" className="section-shell reveal">
       <Group justify="space-between" align="flex-end" mb="md">
         <div>
           <Title order={2}>{text.nav.clients}</Title>
@@ -302,7 +310,7 @@ export function ClientsSection({ text }: SectionProps) {
 
 export function BlogSection({ text }: SectionProps) {
   return (
-    <Container size="xl" id="blog" className="section-shell">
+    <Container size="xl" id="blog" className="section-shell reveal">
       <Group justify="space-between" mb="md">
         <div>
           <Title order={2}>{text.blog.title}</Title>
@@ -338,7 +346,7 @@ type ContactProps = {
 
 export function ContactSection({ text, onSubmit, onWhatsapp, feedback, formRef }: ContactProps) {
   return (
-    <Container size="xl" id="contact" className="section-shell contact-section">
+    <Container size="xl" id="contact" className="section-shell contact-section reveal">
       <Grid gutter="xl" align="stretch">
         <Grid.Col span={{ base: 12, md: 5 }}>
           <Stack gap="sm">

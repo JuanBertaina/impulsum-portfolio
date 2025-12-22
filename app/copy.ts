@@ -52,6 +52,16 @@ const baseEs = {
   valueBody:
     'No vendemos tecnología: entregamos eficiencia, innovación y equipos listos para liderar el futuro. Pilotos en semanas, adopción real y gobierno desde el día uno.',
   servicesIntro: 'Equipo Microsoft-first desde Córdoba con alcance global; desplegamos en semanas, no meses.',
+  impulsumLetters: [
+    { letter: 'I', title: 'Insight', detail: 'Detectamos oportunidades con datos y entrevistas.' },
+    { letter: 'M', title: 'Model', detail: 'Diseñamos arquitectura, procesos y gobierno.' },
+    { letter: 'P', title: 'Pilot', detail: 'Probamos impacto con un caso de alto valor.' },
+    { letter: 'U', title: 'Unify', detail: 'Integramos datos, sistemas y flujos.' },
+    { letter: 'L', title: 'Launch', detail: 'Llevamos la solución a producción.' },
+    { letter: 'S', title: 'Scale', detail: 'Extendemos a más áreas con gobernanza.' },
+    { letter: 'U', title: 'Upskill', detail: 'Entrenamos equipos y líderes.' },
+    { letter: 'M', title: 'Measure', detail: 'Medimos impacto y optimizamos.' }
+  ],
   services: [
     { title: 'Impulsum Advisory', description: 'Estrategia y gobierno en Microsoft 365 y Copilot.' },
     { title: 'Impulsum Agents', description: 'Agentes de IA y copilotos adaptados a tus procesos reales.' },
@@ -170,6 +180,16 @@ const baseEn: typeof baseEs = {
   valueBody:
     'We do not sell technology; we deliver efficiency, innovation, and future-ready teams. Pilots in weeks, real adoption, and governance from day one.',
   servicesIntro: 'Microsoft-first team from Córdoba with global reach—shipping in weeks, not months.',
+  impulsumLetters: [
+    { letter: 'I', title: 'Insight', detail: 'We spot opportunities through data and interviews.' },
+    { letter: 'M', title: 'Model', detail: 'We design architecture, processes, and governance.' },
+    { letter: 'P', title: 'Pilot', detail: 'We test impact with a high-value use case.' },
+    { letter: 'U', title: 'Unify', detail: 'We integrate data, systems, and workflows.' },
+    { letter: 'L', title: 'Launch', detail: 'We ship the solution to production.' },
+    { letter: 'S', title: 'Scale', detail: 'We expand to more areas with governance.' },
+    { letter: 'U', title: 'Upskill', detail: 'We train teams and leaders.' },
+    { letter: 'M', title: 'Measure', detail: 'We track impact and optimize.' }
+  ],
   services: [
     { title: 'Impulsum Advisory', description: 'Strategy and governance across Microsoft 365 and Copilot.' },
     { title: 'Impulsum Agents', description: 'AI agents and copilots tuned to your real processes.' },
