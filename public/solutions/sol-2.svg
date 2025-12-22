@@ -1,0 +1,25 @@
+<svg width="640" height="360" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Power App illustration">
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#00A38C" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0E66FF" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="#0b1f33"/>
+  <rect x="64" y="40" width="512" height="280" rx="24" fill="url(#g2)" opacity="0.25"/>
+  <rect x="92" y="68" width="456" height="60" rx="14" fill="#ffffff" opacity="0.08"/>
+  <rect x="92" y="144" width="190" height="144" rx="16" fill="#0E66FF" opacity="0.2"/>
+  <rect x="306" y="144" width="242" height="64" rx="14" fill="#ffffff" opacity="0.08"/>
+  <rect x="306" y="222" width="242" height="66" rx="14" fill="#ffffff" opacity="0.08"/>
+  <circle cx="122" cy="186" r="18" fill="#00A38C"/>
+  <circle cx="122" cy="234" r="18" fill="#0E66FF"/>
+  <rect x="162" y="172" width="96" height="24" rx="8" fill="#ffffff" opacity="0.7"/>
+  <rect x="162" y="220" width="96" height="24" rx="8" fill="#ffffff" opacity="0.4"/>
+  <path d="M332 258 L360 208 L402 244 L448 184 L520 260" stroke="#00E0B8" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+  <circle cx="360" cy="208" r="7" fill="#00E0B8"/>
+  <circle cx="402" cy="244" r="7" fill="#00E0B8"/>
+  <circle cx="448" cy="184" r="7" fill="#00E0B8"/>
+  <circle cx="520" cy="260" r="7" fill="#00E0B8"/>
+  <text x="108" y="103" fill="#fff" font-family="Arial, sans-serif" font-size="18" opacity="0.9">Power App · Contratos</text>
+  <text x="320" y="182" fill="#fff" font-family="Arial, sans-serif" font-size="14" opacity="0.7">Firmas · Flujo de aprobación</text>
+</svg>
