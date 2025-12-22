@@ -1,0 +1,13 @@
+<svg width="320" height="220" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Finanzas">
+  <rect width="320" height="220" rx="20" fill="#0b1f33"/>
+  <rect x="18" y="18" width="284" height="184" rx="16" fill="#0E66FF" opacity="0.12"/>
+  <rect x="48" y="74" width="224" height="28" rx="10" fill="#ffffff" opacity="0.08"/>
+  <path d="M60 160 L120 110 L170 140 L220 90 L270 150" stroke="#00A38C" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="60" cy="160" r="6" fill="#00A38C"/>
+  <circle cx="120" cy="110" r="6" fill="#00A38C"/>
+  <circle cx="170" cy="140" r="6" fill="#00A38C"/>
+  <circle cx="220" cy="90" r="6" fill="#00A38C"/>
+  <circle cx="270" cy="150" r="6" fill="#00A38C"/>
+  <text x="32" y="56" fill="#fff" font-family="Arial, sans-serif" font-size="16" opacity="0.9">Finanzas</text>
+  <text x="32" y="78" fill="#fff" font-family="Arial, sans-serif" font-size="12" opacity="0.7">Control · Conciliaciones · KPIs</text>
+</svg>

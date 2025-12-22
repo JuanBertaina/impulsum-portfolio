@@ -1,0 +1,23 @@
+<svg width="640" height="360" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Co-delivery illustration">
+  <defs>
+    <linearGradient id="g4" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#00A38C" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0E66FF" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="#0b1f33"/>
+  <rect x="44" y="44" width="552" height="272" rx="24" fill="url(#g4)" opacity="0.22"/>
+  <rect x="76" y="80" width="488" height="88" rx="16" fill="#ffffff" opacity="0.08"/>
+  <rect x="76" y="190" width="230" height="100" rx="16" fill="#0E66FF" opacity="0.18"/>
+  <rect x="334" y="190" width="230" height="100" rx="16" fill="#00A38C" opacity="0.18"/>
+  <path d="M120 220 L200 156 L320 236 L420 150 L520 240" stroke="#00E0B8" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <circle cx="120" cy="220" r="7" fill="#00E0B8"/>
+  <circle cx="200" cy="156" r="7" fill="#00E0B8"/>
+  <circle cx="320" cy="236" r="7" fill="#00E0B8"/>
+  <circle cx="420" cy="150" r="7" fill="#00E0B8"/>
+  <circle cx="520" cy="240" r="7" fill="#00E0B8"/>
+  <text x="100" y="110" fill="#fff" font-family="Arial, sans-serif" font-size="18" opacity="0.9">Co-delivery con partners</text>
+  <text x="100" y="136" fill="#fff" font-family="Arial, sans-serif" font-size="14" opacity="0.7">OneInfo · Quales · Azure · Power Platform</text>
+  <text x="96" y="230" fill="#fff" font-family="Arial, sans-serif" font-size="12" opacity="0.8">Discovery · Roadmap</text>
+  <text x="354" y="230" fill="#fff" font-family="Arial, sans-serif" font-size="12" opacity="0.8">Entrega · Adopción</text>
+</svg>

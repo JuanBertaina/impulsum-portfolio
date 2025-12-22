@@ -1,0 +1,22 @@
+<svg width="640" height="360" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Copilot pilot illustration">
+  <defs>
+    <linearGradient id="g3" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0E66FF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#00A38C" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="#0b1f33"/>
+  <rect x="40" y="40" width="560" height="280" rx="26" fill="url(#g3)" opacity="0.2"/>
+  <rect x="70" y="72" width="500" height="64" rx="16" fill="#ffffff" opacity="0.08"/>
+  <rect x="70" y="152" width="500" height="140" rx="20" fill="#ffffff" opacity="0.06"/>
+  <circle cx="120" cy="104" r="12" fill="#0E66FF"/>
+  <circle cx="150" cy="104" r="12" fill="#00A38C"/>
+  <circle cx="180" cy="104" r="12" fill="#5b8def"/>
+  <rect x="110" y="182" width="170" height="76" rx="14" fill="#0E66FF" opacity="0.22"/>
+  <rect x="310" y="182" width="170" height="76" rx="14" fill="#00A38C" opacity="0.2"/>
+  <path d="M140 260 C200 220 260 220 320 260 C380 300 440 300 500 260" stroke="#00E0B8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.9"/>
+  <text x="96" y="106" fill="#fff" font-family="Arial, sans-serif" font-size="18" opacity="0.9">Copilot for Microsoft 365</text>
+  <text x="96" y="134" fill="#fff" font-family="Arial, sans-serif" font-size="14" opacity="0.7">Pilot · Gobierno · Adopción</text>
+  <text x="128" y="222" fill="#fff" font-family="Arial, sans-serif" font-size="14" opacity="0.8">Seguridad y cumplimiento</text>
+  <text x="328" y="222" fill="#fff" font-family="Arial, sans-serif" font-size="14" opacity="0.8">Uso responsable y métricas</text>
+</svg>

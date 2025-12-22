@@ -1,50 +1,42 @@
-# Impulsum Portfolio
+# Impulsum Portfolio (Next.js + Mantine)
 
-Sitio estático del portfolio de **Impulsum** listo para desplegar en **Azure Static Web Apps**.
+Landing SPA de Impulsum reconstruida en **Next.js 15 (App Router) + React 19 RC + TypeScript**, con UI basada en **Mantine** y export estático para **Azure Static Web Apps**.
 
-## 📦 Contenido
-- HTML/CSS/JS plano (sin build)
-- Workflow de GitHub Actions para despliegue automático a Azure Static Web Apps
+## Stack
+- Next.js 15.4.10 · React 19 RC · TypeScript
+- Mantine 7 (core/hooks/notifications) + Tabler Icons
+- Export estático (`output: 'export'`) sin API/SSR
+- Estilos base en `app/globals.css`, componentes en `app/components/*`, copy en `app/copy.ts`
 
-## 🚀 Despliegue automático (CI/CD)
-Este repo contiene un workflow que, en cada push a `main` (o `master` si preferís), publica el sitio en tu **Azure Static Web App** existente llamada `impulsum-web`.
-
-### Requisitos previos
-1. Una Azure Static Web App creada: **impulsum-web**.
-2. Un **deployment token** de Azure Static Web Apps:
-   - En Azure Portal → tu Static Web App → **Manage tokens** → copia el **Deployment token**.
-3. Crear el secreto en GitHub:
-   - En GitHub → Repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**
-   - Nombre del secreto: `AZURE_STATIC_WEB_APPS_API_TOKEN`
-   - Valor: *pega el token copiado del portal de Azure*
-
-### Estructura de archivos
-```
-/
-├─ index.html
-├─ styles.css
-├─ script.js
-├─ Icon.png
-└─ .github/workflows/impulsum-web.yml
+## Scripts locales (pnpm)
+```bash
+pnpm install           # instalar deps
+pnpm dev               # entorno de desarrollo en http://localhost:3000
+pnpm lint              # ESLint
+pnpm build             # genera /out para Azure Static Web Apps
+# Previsualizar export: pnpm build && npx serve out
 ```
 
-## 🔧 Personalización del workflow
-- **Branch:** por defecto `main`. Cambiá `branches` si usás `master`.
-- **Ubicaciones:** `app_location: /` (raíz), `api_location: ""` (sin API), `output_location: ""` (no hay build).
+## Despliegue en Azure Static Web Apps
+El workflow `.github/workflows/azure-static-web-apps-white-tree-070184810.yml` publica en Azure con cada push a `main`.
 
-## 📤 Publicación manual
-Si querés publicar manualmente (sin esperar al CI):
-1. Empujá cambios:
-   ```bash
-   git add .
-   git commit -m "Update portfolio"
-   git push origin main
-   ```
-2. El workflow se ejecuta automáticamente.
+Valores clave:
+- `app_location: "/"` (raíz del proyecto Next)
+- `output_location: "out"` (resultado del export)
+- `api_location: ""` (no se usa API)
 
-## 🧩 Dominio personalizado
-En Azure Static Web Apps → **Custom domains** → agrega tu dominio (p. ej., `impulsum.com.ar`).
+Requisitos:
+1. Static Web App creada (ej: `impulsum-web`).
+2. Token de deployment desde Azure Portal → tu Static Web App → **Manage tokens**.
+3. Secreto en GitHub Actions con ese token:
+   - Nombre usado en el workflow: `AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_TREE_070184810`
 
-## 👤 Autor
-- GitHub: [JuanBertaina](https://github.com/JuanBertaina)
+## Configuración
+- `staticwebapp.config.json` mantiene headers de seguridad, caché de `/_next/static/*` y `/*.png`, y fallback de navegación.
+- Assets en `public/` (`/icon.png`, `/flags/*`).
+- `next.config.mjs` usa `output: 'export'` e `images.unoptimized` para SWA.
+
+## Notas
+- El sitio es SPA con navegación suave y formularios sin backend (mailto/WhatsApp).
+- Si cambiás el nombre de la SWA o el secreto, ajustá el workflow en `.github/workflows/azure-static-web-apps-white-tree-070184810.yml`.
 

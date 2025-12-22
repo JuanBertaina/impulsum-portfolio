@@ -1,0 +1,31 @@
+{
+  "name": "impulsum-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.17.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@mantine/core": "^7.13.3",
+    "@mantine/hooks": "^7.13.3",
+    "@mantine/notifications": "^7.13.3",
+    "@tabler/icons-react": "^3.24.0",
+    "next": "15.4.10",
+    "react": "19.0.0-rc.1",
+    "react-dom": "19.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.0",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "eslint": "9.15.0",
+    "eslint-config-next": "15.4.10",
+    "typescript": "5.6.3"
+  }
+}
