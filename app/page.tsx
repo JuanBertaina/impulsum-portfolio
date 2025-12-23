@@ -64,17 +64,8 @@ export default function HomePage() {
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		const formData = new FormData(event.currentTarget);
-		const name = (formData.get("name") as string) || "";
-		const company = (formData.get("company") as string) || "";
-		const email = (formData.get("email") as string) || "";
-		const message = (formData.get("message") as string) || "";
-		const subject = encodeURIComponent(text.contact.mailSubject);
-		const body = encodeURIComponent(`Nombre: ${name}\nEmpresa: ${company}\nEmail: ${email}\n\nMensaje:\n${message}`);
-		const mailto = `mailto:contacto@impulsum.com.ar?subject=${subject}&body=${body}`;
-		setFeedback(text.contact.mailFeedback);
-		window.location.href = mailto;
-		setTimeout(() => setFeedback(text.contact.whatsappFallback), 1400);
+		// Mailto flow disabled (depends on user client). Encourage WhatsApp instead.
+		// setFeedback(text.contact.whatsappFallback);
 	};
 
 	const handleWhatsapp = () => {

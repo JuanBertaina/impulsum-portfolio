@@ -7,7 +7,7 @@ export const navOrder: SectionId[] = [
 	"solutions",
 	"technologies",
 	"clients",
-	"blog",
+	// "blog",
 	"contact",
 ];
 
@@ -151,14 +151,14 @@ const baseEs = {
 		description:
 			"Descubrimos oportunidades, diseñamos soluciones, probamos impacto y medimos adopción con gobierno desde el inicio.",
 	},
-	blog: {
-		title: "Ideas y recursos",
-		description: "Guías prácticas y casos listos para implementar muy pronto.",
-		cards: [
-			{title: "Cómo priorizar casos de IA", description: "Checklist para elegir quick wins y proyectos estratégicos."},
-			{title: "Data playbook para negocio", description: "Pasos para consolidar métricas y gobernar accesos."},
-		],
-	},
+	// blog: {
+	// 	title: "Ideas y recursos",
+	// 	description: "Guías prácticas y casos listos para implementar muy pronto.",
+	// 	cards: [
+	// 		{title: "Cómo priorizar casos de IA", description: "Checklist para elegir quick wins y proyectos estratégicos."},
+	// 		{title: "Data playbook para negocio", description: "Pasos para consolidar métricas y gobernar accesos."},
+	// 	],
+	// },
 	contact: {
 		title: "¿Listo para el próximo salto?",
 		description: "Córdoba, Argentina · Trabajo híbrido/remoto · Alcance local, regional e internacional",
@@ -172,7 +172,7 @@ const baseEs = {
 		whatsapp: "WhatsApp",
 		mailSubject: "Solicitud de diagnóstico - Impulsum",
 		mailFeedback: "Abriendo tu cliente de correo...",
-		whatsappFallback: "Si no se abrió el correo, podés escribirnos por WhatsApp.",
+		// whatsappFallback: "Si no se abrió el correo, podés escribirnos por WhatsApp.",
 	},
 	hashtags:
 		"#Impulsum #AIforBusiness #Automation #Microsoft365 #CopilotForWork #PowerBI #PowerAutomate #PowerApps #DataWarehouse #ETL #DigitalTransformation #FutureReady #DataDriven #EnterpriseAI #ProcessOrchestration",
@@ -296,14 +296,14 @@ const baseEn: typeof baseEs = {
 		description:
 			"We spot opportunities, design solutions, test impact, and measure adoption with governance from day one.",
 	},
-	blog: {
-		title: "Ideas & resources",
-		description: "Actionable guides and ready-to-run use cases coming soon.",
-		cards: [
-			{title: "How to prioritize AI use cases", description: "Checklist to pick quick wins and strategic bets."},
-			{title: "Data playbook for business teams", description: "Steps to consolidate metrics and govern access."},
-		],
-	},
+	// blog: {
+	// 	title: "Ideas & resources",
+	// 	description: "Actionable guides and ready-to-run use cases coming soon.",
+	// 	cards: [
+	// 		{title: "How to prioritize AI use cases", description: "Checklist to pick quick wins and strategic bets."},
+	// 		{title: "Data playbook for business teams", description: "Steps to consolidate metrics and govern access."},
+	// 	],
+	// },
 	contact: {
 		title: "Ready for your next leap?",
 		description: "Córdoba, Argentina · Hybrid/remote work · Local, regional, and global reach",
@@ -317,7 +317,7 @@ const baseEn: typeof baseEs = {
 		whatsapp: "WhatsApp",
 		mailSubject: "Diagnosis request - Impulsum",
 		mailFeedback: "Opening your mail client...",
-		whatsappFallback: "If email did not open, send us a WhatsApp.",
+		// whatsappFallback: "If email did not open, send us a WhatsApp.",
 	},
 	hashtags:
 		"#Impulsum #AIforBusiness #Automation #Microsoft365 #CopilotForWork #PowerBI #PowerAutomate #PowerApps #DataWarehouse #ETL #DigitalTransformation #FutureReady #DataDriven #EnterpriseAI #ProcessOrchestration",

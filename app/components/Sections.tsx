@@ -412,9 +412,6 @@ export function ContactSection({text, onSubmit, onWhatsapp, feedback, formRef}: 
 								mt="md"
 							/>
 							<Group gap="sm" mt="md" wrap="wrap">
-								<Button type="submit" variant="gradient" rightSection={<IconSend size={16} />}>
-									{text.contact.submit}
-								</Button>
 								<Button
 									type="button"
 									variant="outline"
@@ -444,12 +441,12 @@ export function FooterSection({text}: FooterProps) {
 		<footer className="site-footer">
 			<Container size="xl">
 				<Group justify="space-between" align="center" wrap="wrap">
-					<div>
+					<div className="footer-copy">
 						<Text c="dimmed">{text.footer}</Text>
-						<Text c="dimmed" size="xs">
-							{text.hashtags}
-						</Text>
 					</div>
+					<Text className="footer-hashtags" c="dimmed" size="xs">
+						{text.hashtags}
+					</Text>
 					<Group gap="xs">
 						<ActionIcon component="a" href="mailto:contacto@impulsum.com.ar" variant="light" aria-label="Email">
 							<IconSend size={16} />
