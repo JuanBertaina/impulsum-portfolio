@@ -176,23 +176,23 @@ export function ServicesSection({text}: SectionProps) {
 						</Text>
 					</div>
 				</Group>
-				<div className="impulsum-letters">
-					{text.impulsumLetters.map((item, idx) => (
-						<button
-							key={item.letter + idx}
-							type="button"
-							className={`impulsum-letter${activeLetter === idx ? " active" : ""}`}
-							onMouseEnter={() => setActiveLetter(idx)}
-							onFocus={() => setActiveLetter(idx)}>
-							{item.letter}
-						</button>
-					))}
-					<div
-						className="impulsum-tooltip"
-						style={{
-							left: `${(activeLetter + 0.5) * (100 / text.impulsumLetters.length)}%`,
-						}}>
-						<Text fw={800} size="sm">
+				<div className="impulsum-letters-row">
+					<div className="impulsum-letters">
+						{text.impulsumLetters.map((item, idx) => (
+							<button
+								key={item.letter + idx}
+								type="button"
+								className={`impulsum-letter${activeLetter === idx ? " active" : ""}`}
+								onMouseEnter={() => setActiveLetter(idx)}
+								onFocus={() => setActiveLetter(idx)}
+								onClick={() => setActiveLetter(idx)}
+								aria-expanded={activeLetter === idx}>
+								<span className="impulsum-letter-char">{item.letter}</span>
+							</button>
+						))}
+					</div>
+					<div className="impulsum-detail-panel">
+						<Text fw={800} size="sm" mb={4}>
 							{text.impulsumLetters[activeLetter].title}
 						</Text>
 						<Text size="sm" c="dimmed">
