@@ -207,7 +207,7 @@ export function ServicesSection({text}: SectionProps) {
 
 export function SolutionsSection({text}: SectionProps) {
 	return (
-		<Container size="xl" id="solutions" className="section-shell reveal">
+		<Container size="lg" id="solutions" className="section-shell reveal">
 			<Group justify="space-between" align="flex-end" mb="md" wrap="wrap">
 				<div>
 					<Title order={2}>{text.nav.solutions}</Title>
