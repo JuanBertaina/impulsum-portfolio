@@ -27,22 +27,17 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 	return (
 		<header className="glass-header">
 			<Container size="xl" className="nav-container">
-				<Group gap="sm" align="center">
-					<Image src="/icon.png" alt="Impulsum logo" width={40} height={40} className="brand-logo" />
-					<div>
-						<Text fw={800}>Impulsum</Text>
-						<Text size="sm" c="dimmed" hidden={isMobile}>
-							Data · IA · Automatización
-						</Text>
-					</div>
-				</Group>
-
+				<Image src="/logopag1.svg" alt="Impulsum logo" width={168} height={43} />
 				<Group gap="xs" className="desktop-nav">
 					{navOrder.map((id) => (
 						<Button
 							key={id}
-							variant={activeNav === id ? "gradient" : "subtle"}
-							color="indigo"
+							variant={"subtle"}
+							style={
+								activeNav === id
+									? {borderBottom: "2px solid ", fontWeight: 900, borderRadius: 0, color: "rgba(245, 247, 250, 1)"}
+									: {borderBottom: "0px solid", fontWeight: 500, borderRadius: 0, color: "rgba(245, 247, 250, 1)"}
+							}
 							size="sm"
 							className="nav-link"
 							onClick={() => handleNav(id)}>
@@ -52,27 +47,58 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 				</Group>
 
 				<Group gap="xs" align="center" wrap="wrap" className="nav-actions">
-					<SegmentedControl
+					<Button
+						variant="white"
+						color="rgba(42, 46, 52, 1)"
+						size={isMobile ? "xs" : "sm"}
+						onClick={() => handleNav("contact")}
+						className="contact-btn">
+						{navLabels.contact}
+					</Button>
+					<Flex
+						h={27}
+						w={83}
+						bg={"white"}
+						align="stretch"
+						p={0}
+						m={0}
+						justify="space-between"
+						style={{
+							borderRadius: "4px",
+						}}>
+						<Image
+							onClick={() => setLang("es")}
+							src={"/flags/ar-d.svg"}
+							alt="espanol"
+							height={27}
+							width={36}
+							style={lang === "en" ? {opacity: "25%"} : {opacity: "100%"}}
+						/>
+						<Image
+							onClick={() => setLang("en")}
+							src={"/flags/us-d.svg"}
+							alt="english"
+							height={27}
+							width={36}
+							style={lang === "es" ? {opacity: "25%"} : {opacity: "100%"}}
+						/>
+					</Flex>
+					{/* <SegmentedControl
 						value={lang}
-						onChange={(value) => setLang(value as Language)}
 						data={[
 							{
 								label: !isMobile ? (
-									<Flex p={0}>
-										<Image src={"/flags/ar.svg"} alt="espanol" height={20} width={20} />
-									</Flex>
+									<Image src={"/flags/ar.svg"} alt="espanol" height={27} width={36} />
 								) : (
-									<Image src={"/flags/ar.svg"} alt="espanol" height={20} width={20} />
+									<Image src={"/flags/ar.svg"} alt="espanol" height={27} width={36} />
 								),
 								value: "es",
 							},
 							{
 								label: !isMobile ? (
-									<Flex p={0}>
-										<Image src={"/flags/united-states-flag-icon.png"} alt="english" height={20} width={20} />
-									</Flex>
+									<Image src={"/flags/united-states-flag-icon.png"} alt="english" height={27} width={36} />
 								) : (
-									<Image src={"/flags/united-states-flag-icon.png"} alt="english" height={20} width={20} />
+									<Image src={"/flags/united-states-flag-icon.png"} alt="english" height={27} width={36} />
 								),
 								value: "en",
 							},
@@ -80,15 +106,8 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 						size={isMobile ? "xs" : "sm"}
 						radius="md"
 						className="language-toggle"
-					/>
-					<Button
-						variant="light"
-						size={isMobile ? "xs" : "sm"}
-						rightSection={<IconMail size={16} />}
-						onClick={() => handleNav("contact")}
-						className="contact-btn">
-						{navLabels.contact}
-					</Button>
+					/> */}
+
 					<ActionIcon
 						variant="outline"
 						size={isMobile ? "md" : "lg"}

@@ -1,3 +1,3 @@
-export type Language = 'es' | 'en';
+export type Language = "es" | "en";
 
-export type SectionId = 'propuesta' | 'services' | 'solutions' | 'technologies' | 'clients' | 'blog' | 'contact';
+export type SectionId = "services" | "experiences" | "technologies" | "frameworks" | "us" | "contact";

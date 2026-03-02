@@ -4,7 +4,6 @@ import {useEffect, useMemo, useRef, useState} from "react";
 import {useMediaQuery} from "@mantine/hooks";
 import {NavBar} from "./components/NavBar";
 import {
-	// BlogSection,
 	ClientsSection,
 	ContactSection,
 	FooterSection,
@@ -12,7 +11,6 @@ import {
 	ServicesSection,
 	SolutionsSection,
 	TechnologiesSection,
-	ValueSection,
 } from "./components/Sections";
 import {copy, navOrder} from "./copy";
 import type {Language, SectionId} from "./types";
@@ -20,7 +18,7 @@ import type {Language, SectionId} from "./types";
 export default function HomePage() {
 	const [lang, setLang] = useState<Language>("es");
 	const [feedback, setFeedback] = useState("");
-	const [activeNav, setActiveNav] = useState<SectionId>("propuesta");
+	const [activeNav, setActiveNav] = useState<SectionId>("services");
 	const contactFormRef = useRef<HTMLFormElement>(null);
 	const isMobile = useMediaQuery("(max-width: 900px)");
 	const text = useMemo(() => copy[lang], [lang]);
@@ -47,7 +45,7 @@ export default function HomePage() {
 					if (entry.isIntersecting) entry.target.classList.add("visible");
 				});
 			},
-			{threshold: 0.25}
+			{threshold: 0.25},
 		);
 		elements.forEach((el) => observer.observe(el));
 		return () => observer.disconnect();
@@ -92,8 +90,7 @@ export default function HomePage() {
 			/>
 
 			<main>
-				<HeroSection text={text} onPrimary={() => scrollTo("contact")} onSecondary={() => scrollTo("propuesta")} />
-				<ValueSection text={text} />
+				<HeroSection text={text} onPrimary={() => scrollTo("contact")} onSecondary={() => scrollTo("experiences")} />
 				<ServicesSection text={text} />
 				<SolutionsSection text={text} />
 				<TechnologiesSection text={text} />

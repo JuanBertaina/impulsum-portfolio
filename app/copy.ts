@@ -2,13 +2,13 @@ import {IconBrandFacebook, IconBrandLinkedin, IconBrandWhatsapp, IconBrandX} fro
 import type {Language, SectionId} from "./types";
 
 export const navOrder: SectionId[] = [
-	"propuesta",
 	"services",
-	"solutions",
+	"experiences",
 	"technologies",
-	"clients",
+	"frameworks",
 	// "blog",
-	"contact",
+	"us",
+	// "contact",
 ];
 
 export const socialLinks = [
@@ -42,24 +42,21 @@ export const technologyLogos = [
 
 const baseEs = {
 	nav: {
-		propuesta: "Nosotros",
 		services: "Servicios",
-		solutions: "Soluciones",
+		experiences: "Experiences",
 		technologies: "Tecnologías",
-		clients: "Clientes",
-		blog: "Ideas",
+		frameworks: "Framework",
+		us: "Nosotros",
 		contact: "Contacto",
 	},
-	heroTitle: "Impulsamos decisiones inteligentes con datos, automatización e IA.",
-	heroLead:
-		"Modernizamos la operación diaria integrando Microsoft 365, Power Platform, Copilot, datos y automatización para lograr eficiencia real y resultados medibles.",
-	heroCTA: "Impulsum tu próximo salto digital",
-	heroSecondary: "Ver nuestro enfoque",
+	heroTitle: "Orquestamos tecnología para que tu negocio avance.",
+	heroLead: "Datos, automatización e IA aplicados con gobierno y foco en resultados.",
+	heroCTA: "Haz tu próximo salto digital",
+	heroSecondary: "Conoce nuestro enfoque",
 	heroBadges: ["Microsoft 365", "Power Platform", "Copilot for Work"],
 	valueTitle: "Consultoría que entrega resultados medibles",
 	valueBody:
 		"No vendemos tecnología: entregamos eficiencia, innovación y equipos listos para liderar el futuro. Pilotos en semanas, adopción real y gobierno desde el día uno.",
-	servicesIntro: "Equipo Microsoft-first desde Córdoba con alcance global; desplegamos en semanas, no meses.",
 	impulsumLetters: [
 		{letter: "I", title: "Insight", detail: "Detectamos oportunidades con datos y entrevistas."},
 		{letter: "M", title: "Model", detail: "Diseñamos arquitectura, procesos y gobierno."},
@@ -183,12 +180,11 @@ const baseEs = {
 
 const baseEn: typeof baseEs = {
 	nav: {
-		propuesta: "About",
+		us: "Us",
+		frameworks: "Frameworks",
+		experiences: "Experiences",
 		services: "Services",
-		solutions: "Solutions",
 		technologies: "Technologies",
-		clients: "Clients",
-		blog: "Ideas",
 		contact: "Contact",
 	},
 	heroTitle: "We drive smart decisions with data, automation, and AI.",
@@ -200,7 +196,7 @@ const baseEn: typeof baseEs = {
 	valueTitle: "Consulting that delivers measurable outcomes",
 	valueBody:
 		"We do not sell technology; we deliver efficiency, innovation, and future-ready teams. Pilots in weeks, real adoption, and governance from day one.",
-	servicesIntro: "Microsoft-first team from Córdoba with global reach—shipping in weeks, not months.",
+	// servicesIntro: "Microsoft-first team from Córdoba with global reach—shipping in weeks, not months.",
 	impulsumLetters: [
 		{letter: "I", title: "Insight", detail: "We spot opportunities through data and interviews."},
 		{letter: "M", title: "Model", detail: "We design architecture, processes, and governance."},

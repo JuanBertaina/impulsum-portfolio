@@ -8,11 +8,9 @@ import {
 	Button,
 	Card,
 	Container,
-	Divider,
 	Image as MantineImage,
 	Grid,
 	Group,
-	List,
 	Paper,
 	SimpleGrid,
 	Stack,
@@ -21,188 +19,185 @@ import {
 	TextInput,
 	ThemeIcon,
 	Title,
+	Flex,
 } from "@mantine/core";
-import {IconArrowRight, IconBrandWhatsapp, IconCheck, IconSend, IconWorld} from "@tabler/icons-react";
-import {useState} from "react";
-import {heroStats, socialLinks, technologyLogos, type Copy} from "../copy";
+import {IconArrowRight, IconBrandWhatsapp, IconChevronLeft, IconChevronRight, IconSend} from "@tabler/icons-react";
+import {useEffect, useMemo, useRef, useState} from "react";
+import {socialLinks, technologyLogos, type Copy} from "../copy";
+
+type SectionProps = {text: Copy};
 
 type HeroProps = {
 	text: Copy;
 	onPrimary: () => void;
 	onSecondary: () => void;
 };
-
 export function HeroSection({text, onPrimary, onSecondary}: HeroProps) {
+	const PAGE_SIZE = 5; // Cantidad de logos a mostrar por "página" en el carrusel
+	const [page, setPage] = useState(0);
+
+	const pageCount = Math.max(1, Math.ceil(technologyLogos.length / PAGE_SIZE));
+
+	const visible = useMemo(() => {
+		const start = page * PAGE_SIZE;
+		return technologyLogos.slice(start, start + PAGE_SIZE);
+	}, [technologyLogos, page]);
+
+	const prev = () => setPage((p) => (p - 1 + pageCount) % pageCount);
+	const next = () => setPage((p) => (p + 1) % pageCount);
+
+	// Si cambia la cantidad y la page queda fuera, la corregimos:
+	if (page > pageCount - 1) setPage(pageCount - 1);
+
 	return (
-		<Container size="xl" className="hero-shell reveal" id="hero">
-			<Grid gutter={{base: "lg", md: "xl"}} align="center">
-				<Grid.Col span={{base: 12, md: 7}}>
-					<Stack gap="sm">
-						<Group gap="xs" wrap="wrap">
-							{text.heroBadges.map((badge) => (
-								<Badge key={badge} variant="gradient" radius="lg">
-									{badge}
-								</Badge>
-							))}
-						</Group>
-						<Title order={1}>{text.heroTitle}</Title>
-						<Text size="lg" c="dimmed">
-							{text.heroLead}
-						</Text>
-						<Group gap="sm" wrap="wrap">
-							<Button size="md" variant="gradient" rightSection={<IconArrowRight size={18} />} onClick={onPrimary}>
-								{text.heroCTA}
-							</Button>
-							<Button size="md" variant="outline" color="gray" onClick={onSecondary}>
-								{text.heroSecondary}
-							</Button>
-						</Group>
-						<Group gap="lg" mt="sm" wrap="wrap">
-							{heroStats.map((stat) => (
-								<Paper key={stat.label} withBorder p="md" radius="md" className="stat-card">
-									<Text fw={700}>{stat.value}</Text>
-									<Text size="sm" c="dimmed">
-										{stat.label}
+		<section className="hero-shell reveal" id="hero">
+			<Container size="xl" className="hero-shell__inner">
+				<Stack gap={"lg"} align="center" justify="center" maw={"60%"}>
+					<h1 className="hero-h1">{text.heroTitle}</h1>
+					<Text size="md" ta={"center"}>
+						{text.heroLead}
+					</Text>
+					<Flex justify={"center"} gap="sm" wrap="wrap" w={"100%"}>
+						<Button size="lg" w={"35%"} className="hero-primary-btn" onClick={onPrimary}>
+							{text.heroCTA}
+						</Button>
+						<Button size="lg" w={"35%"} className="hero-secondary-btn" onClick={onSecondary}>
+							{text.heroSecondary}
+						</Button>
+					</Flex>
+					{/* <Group gap="lg" mt="sm" wrap="wrap">
+								{heroStats.map((stat) => (
+									<Paper key={stat.label} withBorder p="md" radius="md" className="stat-card">
+										<Text fw={700}>{stat.value}</Text>
+										<Text size="sm" c="dimmed">
+											{stat.label}
+										</Text>
+									</Paper>
+								))}
+							</Group> */}
+					<div className="logo-tape">
+						<ActionIcon
+							size={"md"}
+							variant="transparent"
+							onClick={prev}
+							aria-label="Anterior"
+							disabled={pageCount <= 1}>
+							<IconChevronLeft size={30} />
+						</ActionIcon>
+						<div className="logo-track paged">
+							{visible.map((tech, idx) => (
+								<div key={`${tech.name}-${idx}`} className="logo-chip">
+									{tech.logo ? (
+										<Stack className="logo-img" align="center" justify="center" p={0} bg="white">
+											<Image src={tech.logo} alt={tech.name} width={44} height={44} style={{objectFit: "contain"}} />
+										</Stack>
+									) : (
+										<Avatar size="md" radius="xl" color="blue">
+											{tech.short}
+										</Avatar>
+									)}
+									<Text size="sm" fw={600}>
+										{tech.name}
 									</Text>
-								</Paper>
+								</div>
 							))}
-						</Group>
-					</Stack>
-				</Grid.Col>
-				<Grid.Col span={{base: 12, md: 5}}>
-					<Paper p="lg" radius="xl" className="glass-card" withBorder>
-						<Group justify="space-between" mb="md">
-							<Badge variant="light" leftSection={<IconWorld size={14} />}>
-								Azure + Power Platform
-							</Badge>
-							<Badge variant="outline" color="teal">
-								Governance-first
-							</Badge>
-						</Group>
-						<Stack gap="sm">
-							<Text fw={700}>{text.valueTitle}</Text>
-							<Text c="dimmed">{text.valueBody}</Text>
-							<Divider my="xs" />
-							<List
-								spacing="sm"
-								icon={
-									<ThemeIcon size={20} radius="xl" variant="gradient">
-										<IconCheck size={14} />
-									</ThemeIcon>
-								}>
-								<List.Item>Pilotos en semanas con objetivos claros</List.Item>
-								<List.Item>Adopción y training integrado</List.Item>
-								<List.Item>Seguridad y gobierno desde el inicio</List.Item>
-							</List>
-						</Stack>
-					</Paper>
-				</Grid.Col>
-			</Grid>
-		</Container>
+						</div>
+						<ActionIcon size={"md"} variant="transparent" onClick={next} aria-label="Siguiente">
+							<IconChevronRight size={30} />
+						</ActionIcon>
+					</div>
+				</Stack>
+			</Container>
+		</section>
 	);
 }
 
-type SectionProps = {text: Copy};
+export function ServicesCarousel({text}: {text: any}) {
+	const services = text.services ?? [];
+	const count = services.length;
 
-export function ValueSection({text}: SectionProps) {
+	const loop = useMemo(() => [...services, ...services], [services]);
+
+	const HOLD_MS = 3000;
+	const MOVE_MS = 600;
+
+	const [index, setIndex] = useState(0); // 0..count-1
+	const [paused, setPaused] = useState(false);
+	const [animate, setAnimate] = useState(true);
+
+	const timerRef = useRef<number | null>(null);
+
+	useEffect(() => {
+		if (!count) return;
+
+		const schedule = () => {
+			// hold
+			timerRef.current = window.setTimeout(() => {
+				setAnimate(true);
+				setIndex((i) => i + 1);
+			}, HOLD_MS);
+		};
+
+		if (!paused) schedule();
+
+		return () => {
+			if (timerRef.current) window.clearTimeout(timerRef.current);
+		};
+	}, [paused, count, index]);
+
+	// cuando pasamos al duplicado (index === count), hacemos “snap” a 0 sin animación
+	useEffect(() => {
+		if (!count) return;
+
+		if (index === count) {
+			// terminamos de animar hacia la copia duplicada...
+			const t = window.setTimeout(() => {
+				setAnimate(false); // desactiva transition
+				setIndex(0); // snap al inicio
+				// reactivamos animación en el próximo frame
+				requestAnimationFrame(() => setAnimate(true));
+			}, MOVE_MS);
+
+			return () => window.clearTimeout(t);
+		}
+	}, [index, count]);
+
+	if (!count) return null;
+
 	return (
-		<Container size="xl" id="propuesta" className="section-shell reveal">
-			<Stack gap="sm">
-				<Badge variant="light" color="indigo" size="lg" radius="md">
-					{text.servicesIntro}
-				</Badge>
-				<Title order={2}>{text.valueTitle}</Title>
-				<Text c="dimmed" size="lg">
-					{text.valueBody}
-				</Text>
-			</Stack>
-		</Container>
+		<div className="services-shell">
+			<Container size="xl" className="services-shell__inner">
+				<div className="services-carousel" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+					<div className="services-viewport">
+						<h3 style={{color: "rgba(0, 211, 223, 1)", margin: 0, textAlign: "center"}}>{text.nav.services}</h3>
+						<div
+							className={`services-track ${animate ? "is-animating" : ""}`}
+							style={{
+								transform: `translateX(-${index * 100}%)`,
+								["--moveMs" as any]: `${MOVE_MS}ms`,
+							}}>
+							{loop.map((service, idx) => (
+								<div className="services-slide" key={`${service.title}-${idx}`}>
+									<Card padding="lg" radius="md" withBorder className="services-card" w="100%" h="100%">
+										<Title order={1} className="services-card__title" c="rgba(245, 247, 250, 1)" fw={700}>
+											{service.title}
+										</Title>
+										<Text c="rgba(245, 247, 250, 1)" size="md">
+											{service.description}
+										</Text>
+									</Card>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			</Container>
+		</div>
 	);
 }
 
 export function ServicesSection({text}: SectionProps) {
-	const [activeLetter, setActiveLetter] = useState(0);
-	const steps = text.method.steps
-		.split("·")
-		.map((s) => s.trim())
-		.filter(Boolean);
-	return (
-		<Container size="xl" id="services" className="section-shell reveal">
-			<Group justify="space-between" align="flex-end" mb="md" wrap="wrap">
-				<div>
-					<Title order={2}>{text.nav.services}</Title>
-					<Text c="dimmed">{text.servicesIntro}</Text>
-				</div>
-				<Badge variant="outline" color="teal">
-					Microsoft-first
-				</Badge>
-			</Group>
-			<SimpleGrid cols={{base: 1, sm: 2, lg: 3}} spacing={{base: "sm", sm: "md"}}>
-				{text.services.map((service) => (
-					<Card key={service.title} padding="lg" radius="md" withBorder className="glass-card">
-						<Text fw={700}>{service.title}</Text>
-						<Text c="dimmed" size="sm">
-							{service.description}
-						</Text>
-					</Card>
-				))}
-			</SimpleGrid>
-			{/* <Paper withBorder p="md" radius="md" mt="md" className="glass-card">
-        <Group justify="space-between" align="flex-start" wrap="wrap">
-          <div>
-            <Text fw={700}>{text.method.title}</Text>
-            <Text c="dimmed" size="sm">
-              {text.method.description}
-            </Text>
-          </div>
-          <Badge variant="gradient" color="indigo">
-            IMPULSUM
-          </Badge>
-        </Group>
-        <Group gap="xs" mt="sm" wrap="wrap">
-          {steps.map((step) => (
-            <Badge key={step} variant="light" color="teal">
-              {step}
-            </Badge>
-          ))}
-        </Group>
-      </Paper> */}
-			<Paper withBorder p="md" radius="md" mt="md" className="glass-card">
-				<Group justify="space-between" align="flex-start" wrap="wrap">
-					<div>
-						<Text fw={700}>IMPULSUM Framework</Text>
-						<Text c="dimmed" size="sm">
-							De idea a resultado real: cada letra describe un paso accionable.
-						</Text>
-					</div>
-				</Group>
-				<div className="impulsum-letters-row">
-					<div className="impulsum-letters">
-						{text.impulsumLetters.map((item, idx) => (
-							<button
-								key={item.letter + idx}
-								type="button"
-								className={`impulsum-letter${activeLetter === idx ? " active" : ""}`}
-								onMouseEnter={() => setActiveLetter(idx)}
-								onFocus={() => setActiveLetter(idx)}
-								onClick={() => setActiveLetter(idx)}
-								aria-expanded={activeLetter === idx}>
-								<span className="impulsum-letter-char">{item.letter}</span>
-							</button>
-						))}
-					</div>
-					<div className="impulsum-detail-panel">
-						<Text fw={800} size="sm" mb={4}>
-							{text.impulsumLetters[activeLetter].title}
-						</Text>
-						<Text size="sm" c="dimmed">
-							{text.impulsumLetters[activeLetter].detail}
-						</Text>
-					</div>
-				</div>
-			</Paper>
-		</Container>
-	);
+	return <ServicesCarousel text={text} />;
 }
 
 export function SolutionsSection({text}: SectionProps) {
@@ -210,8 +205,8 @@ export function SolutionsSection({text}: SectionProps) {
 		<Container size="lg" id="solutions" className="section-shell reveal">
 			<Group justify="space-between" align="flex-end" mb="md" wrap="wrap">
 				<div>
-					<Title order={2}>{text.nav.solutions}</Title>
-					<Text c="dimmed">{text.solutionsIntro}</Text>
+					<Title order={2}>{text.nav.services}</Title>
+					<Text c="dimmed">{text.servicesIntro}</Text>
 				</div>
 				<Badge variant="gradient">Impacto medible</Badge>
 			</Group>
@@ -246,33 +241,12 @@ export function SolutionsSection({text}: SectionProps) {
 }
 
 export function TechnologiesSection({text}: SectionProps) {
-	const repeated = [...technologyLogos, ...technologyLogos];
 	return (
 		<Container size="xl" id="technologies" className="section-shell reveal">
 			<Title order={2}>{text.nav.technologies}</Title>
 			<Text c="dimmed" mb="md">
 				{text.technologiesIntro}
 			</Text>
-			<div className="logo-tape">
-				<div className="logo-track">
-					{repeated.map((tech, idx) => (
-						<div key={`${tech.name}-${idx}`} className="logo-chip">
-							{tech.logo ? (
-								<Stack className="logo-img" align="center" justify="center" p={0} bg={"white"}>
-									<Image src={tech.logo} alt={tech.name} width={44} height={44} style={{objectFit: "contain"}} />
-								</Stack>
-							) : (
-								<Avatar size="md" radius="xl" color="blue">
-									{tech.short}
-								</Avatar>
-							)}
-							<Text size="sm" fw={600}>
-								{tech.name}
-							</Text>
-						</div>
-					))}
-				</div>
-			</div>
 		</Container>
 	);
 }
