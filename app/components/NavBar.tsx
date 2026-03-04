@@ -27,7 +27,15 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 	return (
 		<header className="glass-header">
 			<Container size="xl" className="nav-container">
-				<Image src="/logopag1.svg" alt="Impulsum logo" width={168} height={43} />
+				<Image
+					src="/navbar/logopag1.svg"
+					alt="Impulsum logo"
+					onClick={() => handleNav("hero")}
+					width={168}
+					height={43}
+					style={{cursor: "pointer", userSelect: "none"}}
+					loading="lazy"
+				/>
 				<Group gap="xs" className="desktop-nav">
 					{navOrder.map((id) => (
 						<Button
@@ -68,46 +76,31 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 						}}>
 						<Image
 							onClick={() => setLang("es")}
-							src={"/flags/ar-d.svg"}
+							src={"/navbar/flags/ar-d.svg"}
 							alt="espanol"
 							height={27}
 							width={36}
-							style={lang === "en" ? {opacity: "25%"} : {opacity: "100%"}}
+							style={
+								lang === "en"
+									? {cursor: "pointer", opacity: "25%", userSelect: "none"}
+									: {cursor: "pointer", opacity: "100%", userSelect: "none"}
+							}
+							loading="lazy"
 						/>
 						<Image
 							onClick={() => setLang("en")}
-							src={"/flags/us-d.svg"}
+							src={"/navbar/flags/us-d.svg"}
 							alt="english"
 							height={27}
 							width={36}
-							style={lang === "es" ? {opacity: "25%"} : {opacity: "100%"}}
+							style={
+								lang === "es"
+									? {cursor: "pointer", opacity: "25%", userSelect: "none"}
+									: {cursor: "pointer", opacity: "100%", userSelect: "none"}
+							}
+							loading="lazy"
 						/>
 					</Flex>
-					{/* <SegmentedControl
-						value={lang}
-						data={[
-							{
-								label: !isMobile ? (
-									<Image src={"/flags/ar.svg"} alt="espanol" height={27} width={36} />
-								) : (
-									<Image src={"/flags/ar.svg"} alt="espanol" height={27} width={36} />
-								),
-								value: "es",
-							},
-							{
-								label: !isMobile ? (
-									<Image src={"/flags/united-states-flag-icon.png"} alt="english" height={27} width={36} />
-								) : (
-									<Image src={"/flags/united-states-flag-icon.png"} alt="english" height={27} width={36} />
-								),
-								value: "en",
-							},
-						]}
-						size={isMobile ? "xs" : "sm"}
-						radius="md"
-						className="language-toggle"
-					/> */}
-
 					<ActionIcon
 						variant="outline"
 						size={isMobile ? "md" : "lg"}

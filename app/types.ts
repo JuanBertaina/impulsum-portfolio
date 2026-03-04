@@ -1,3 +1,10 @@
 export type Language = "es" | "en";
 
-export type SectionId = "services" | "experiences" | "technologies" | "frameworks" | "us" | "contact";
+export type SectionId =
+	| "hero"
+	| "services"
+	| "experiences"
+	//| "technologies"
+	| "framework"
+	| "us"
+	| "contact";

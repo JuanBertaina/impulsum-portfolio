@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type {Metadata} from "next";
 import {Manrope} from "next/font/google";
 import {ColorSchemeScript} from "@mantine/core";
 import "@mantine/core/styles.css";
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
 		"Process Orchestration",
 	],
 	icons: {
-		icon: "/icon.png",
-		apple: "/icon.png",
+		icon: "/Favicon.svg",
+		apple: "/Favicon.svg",
 	},
 };
 

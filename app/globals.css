@@ -142,7 +142,7 @@ a {
 	width: 100%;
 	margin: 0;
 	padding: clamp(3rem, 6vw, 4rem) 0 clamp(2rem, 5vw, 3rem);
-	background-image: url("/pages/fondohero-100.jpg");
+	background-image: url("/hero/fondohero-100.jpg");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -161,7 +161,7 @@ a {
 
 .hero-primary-btn {
 	background: linear-gradient(160deg, #073fb7, rgba(42, 46, 52, 1));
-	color: #fff;
+	color: rgba(245, 247, 250, 1);
 	border: 0;
 	border-radius: 30px;
 	padding: 10px 20px;
@@ -176,7 +176,7 @@ a {
 
 .hero-secondary-btn {
 	background: linear-gradient(160deg, rgba(0, 211, 223, 1), rgba(42, 46, 52, 1));
-	color: #fff;
+	color: rgba(245, 247, 250, 1);
 	border: 0;
 	border-radius: 30px;
 	padding: 10px 20px;
@@ -213,7 +213,7 @@ a {
 	z-index: 1;
 	scroll-margin-top: 20px;
 	margin: 0;
-	background-image: url("/pages/fondobanner-100.jpg");
+	background-image: url("/services/fondobanner-100.jpg");
 	height: 20rem;
 	display: flex;
 	flex-direction: column;
@@ -366,7 +366,7 @@ a {
 }
 
 .logo-dot.active {
-	background: rgba(255, 255, 255, 0.9);
+	background: rgba(245, 247, 250, 1);
 }
 
 @keyframes scroll {
@@ -378,97 +378,172 @@ a {
 	}
 }
 
-.solution-image,
-.client-image {
-	border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.impulsum-chip {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 54px;
-	height: 54px;
-	border-radius: 14px;
-	background: linear-gradient(145deg, rgba(14, 102, 255, 0.3), rgba(0, 163, 140, 0.28));
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
-	cursor: pointer;
-	color: #fff;
-}
-
-.impulsum-letters {
-	position: relative;
+.experiences-shell {
 	display: grid;
-	grid-template-columns: repeat(8, minmax(54px, 1fr));
-	gap: var(--card-gap);
-	margin-top: 1rem;
-	padding: 0.6rem;
-	border-radius: 16px;
-	background: rgba(255, 255, 255, 0.02);
-	border: 1px solid rgba(255, 255, 255, 0.08);
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	min-height: calc(100vh - var(--header-height));
+	gap: 1rem;
+	padding: 1rem;
 }
 
-.impulsum-letter {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	justify-content: flex-start;
-	font-size: clamp(2.1rem, 4vw, 3.2rem);
-	font-weight: 800;
-	color: #fff;
-	background: linear-gradient(160deg, rgba(31, 95, 184, 0.85), rgba(18, 142, 131, 0.78));
-	border: 1px solid rgba(255, 255, 255, 0.12);
-	border-radius: 16px;
-	padding: 0.75rem;
-	text-align: center;
-	cursor: pointer;
+.experiences-card {
+	color: rgba(245, 247, 250, 1);
+	padding: 1rem;
+	box-shadow: 0 16px 60px rgba(0, 0, 0, 0.28);
 	transition:
 		transform 0.25s ease,
 		box-shadow 0.25s ease,
-		opacity 0.2s ease;
-	min-height: 96px;
+		background 0.25s ease;
+	min-width: 100%;
+	min-height: 100%;
 }
 
-.impulsum-letter.active {
+.experiences-flip:nth-child(1) .experiences-card {
+	background: linear-gradient(110deg, rgba(4, 15, 45, 1) 70%, #033395 100%);
+}
+.experiences-flip:nth-child(2) .experiences-card {
+	background: linear-gradient(110deg, #033395 0%, rgba(4, 15, 45, 1) 40%);
+}
+.experiences-flip:nth-child(3) .experiences-card {
+	background: linear-gradient(110deg, rgba(4, 15, 45, 1) 50%, #033395 90%);
+}
+.experiences-flip:nth-child(4) .experiences-card {
+	background: linear-gradient(110deg, #033395 0%, rgba(4, 15, 45, 1) 20%);
+}
+
+/* Outer: define perspectiva */
+.experiences-flip {
+	perspective: 1200px;
+	width: 100%;
+	height: 100%;
+}
+
+/* Inner: se rota */
+.experiences-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 0.6s ease;
+}
+
+/* Cuando toggleExp=true */
+.experiences-inner.is-flipped {
+	transform: rotateY(180deg);
+}
+
+/* Caras */
+.experiences-face {
+	position: absolute;
+	inset: 0;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	border-radius: 12px; /* si querés */
+}
+
+/* Frente */
+.experiences-front {
+	transform: rotateY(0deg);
+}
+
+/* Dorso */
+.experiences-back {
+	transform: rotateY(180deg);
+}
+
+.experiences-flip:hover .experiences-face {
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.experiences-card {
+	border: 2px solid transparent;
+	transition:
+		border 0.5s ease,
+		box-shadow 0.25s ease;
+}
+
+.experiences-card:hover {
+	border: 2px solid rgba(245, 247, 250, 1);
+	box-shadow: 0 0 25px #60d0dd;
+}
+
+.experiences-button {
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	background: transparent;
+	color: rgba(245, 247, 250, 1);
+	border: 2px solid #60d0dd;
+	border-radius: 20px;
+	padding: 0.5rem;
+	font-weight: 500;
 	box-shadow: 0 10px 30px rgba(14, 102, 255, 0.3);
-	transform: translateY(-2px);
+	cursor: pointer;
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease;
 }
 
-.impulsum-letter:not(.active) {
-	opacity: 0.7;
+.framework-shell {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	min-height: 80vh;
+	background: rgba(43, 46, 51, 1);
+	padding: 3rem 1.5rem;
+	margin: 0;
+	overflow: hidden;
 }
-
-.impulsum-letter:focus-visible {
-	outline: 2px solid rgba(54, 207, 201, 0.8);
-	outline-offset: 2px;
-}
-
-.impulsum-letter-char {
-	display: block;
-}
-
-.impulsum-letters-row {
+.framework-grid {
 	display: grid;
-	grid-template-columns: 1fr minmax(260px, 0.8fr);
-	gap: 1rem;
-	align-items: stretch;
+	grid-template-columns: repeat(4, 1fr);
+	height: 40vh;
+	gap: 1.5rem;
+	width: 100%;
+}
+.framework-card {
+	border: 2px solid rgba(245, 247, 250, 1);
+	border-radius: 1.25rem;
+	padding: 1.5rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
-.impulsum-letters {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(54px, 1fr));
-	gap: var(--card-gap);
-	align-items: stretch;
+.framework-qa {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	gap: 0.2rem;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
 }
 
-.impulsum-detail-panel {
-	background: rgba(9, 25, 44, 0.85);
-	border: 1px solid rgba(255, 255, 255, 0.08);
-	border-radius: 16px;
-	padding: 1rem;
-	box-shadow: 0 16px 60px rgba(0, 0, 0, 0.28);
-	min-height: 120px;
+.us-shell {
+	padding: var(--section-spacing) 0;
+	position: relative;
+	z-index: 1;
+	scroll-margin-top: 20px;
+	margin: 0;
+	display: flex;
+	padding: 3re;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.contact-shell {
+	background: rgba(1, 16, 47, 1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .reveal {
@@ -498,10 +573,71 @@ a {
 	background: rgba(0, 163, 140, 0.06);
 }
 
+.form-input {
+	align-items: center;
+	gap: 1rem;
+	border: 2px solid rgba(245, 247, 250, 1);
+	border-radius: 16px;
+	padding: 0.5rem 1rem;
+	background: transparent;
+	color: rgba(245, 247, 250, 1);
+}
+
+.form-input ::placeholder {
+	color: rgba(245, 247, 250, 0.6);
+}
+
+.whatsapp-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: rgba(0, 211, 223, 1);
+	color: rgba(1, 16, 47, 1);
+	border: 0;
+	border-radius: 30px;
+	padding: 10px 20px;
+	font-size: 15px;
+	font-weight: 800;
+	box-shadow: 0 12px 28px rgba(7, 63, 183, 0.28);
+	transition:
+		background 0.25s ease,
+		box-shadow 0.25s ease;
+}
+.email-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: transparent;
+	color: rgba(245, 247, 250, 1);
+	border: 1px solid rgba(0, 211, 223, 1);
+	border-radius: 30px;
+	padding: 10px 20px;
+	font-size: 15px;
+	font-weight: 800;
+	box-shadow: 0 12px 28px rgba(7, 63, 183, 0.28);
+	transition:
+		background 0.25s ease,
+		box-shadow 0.25s ease;
+}
+
+.email-button:hover {
+	border: 0;
+}
+
+.contact-social-links {
+	display: flex;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.contact-social-links-button {
+	background: transparent;
+	color: rgba(0, 211, 223, 1);
+}
 .site-footer {
 	padding: 2rem 0;
-	border-top: 1px solid rgba(255, 255, 255, 0.08);
-	background: rgba(6, 16, 32, 0.92);
+	background: rgba(1, 16, 47, 1);
+	visibility: visible;
 }
 
 @media (max-width: 900px) {

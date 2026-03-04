@@ -3,17 +3,16 @@
 import {useEffect, useMemo, useRef, useState} from "react";
 import {useMediaQuery} from "@mantine/hooks";
 import {NavBar} from "./components/NavBar";
-import {
-	ClientsSection,
-	ContactSection,
-	FooterSection,
-	HeroSection,
-	ServicesSection,
-	SolutionsSection,
-	TechnologiesSection,
-} from "./components/Sections";
 import {copy, navOrder} from "./copy";
 import type {Language, SectionId} from "./types";
+import {HeroSection} from "./components/sections/HeroSection";
+import {ServicesSection} from "./components/sections/ServicesSection";
+import {TechnologiesSection} from "./components/sections/TechnologiesSection";
+import {ContactSection} from "./components/sections/ContactSection";
+import {FooterSection} from "./components/sections/FooterSection";
+import {ExperiencesSection} from "./components/sections/ExperiencesSection";
+import {FrameworkSection} from "./components/sections/FrameworkSection";
+import {UsSection} from "./components/sections/UsSection";
 
 export default function HomePage() {
 	const [lang, setLang] = useState<Language>("es");
@@ -90,12 +89,13 @@ export default function HomePage() {
 			/>
 
 			<main>
-				<HeroSection text={text} onPrimary={() => scrollTo("contact")} onSecondary={() => scrollTo("experiences")} />
+				<HeroSection text={text} onPrimary={() => scrollTo("hero")} onSecondary={() => scrollTo("experiences")} />
 				<ServicesSection text={text} />
-				<SolutionsSection text={text} />
+				<ExperiencesSection text={text} lang={lang} />
+				<FrameworkSection text={text} />
 				<TechnologiesSection text={text} />
-				<ClientsSection text={text} />
-				{/* <BlogSection text={text} /> */}
+				{/* <ClientsSection text={text} /> */}
+				<UsSection text={text} />
 				<ContactSection
 					text={text}
 					onSubmit={handleSubmit}
