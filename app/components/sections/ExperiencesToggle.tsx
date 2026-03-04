@@ -31,9 +31,8 @@ export const ExperiencesToggle = ({text, lang, exp}: {lang: string; text: Copy; 
 
 				{/* BACK */}
 				<div className="experiences-face experiences-back experiences-card">
-					<Stack align="center" justify="center" ta="center">
-						<Title order={3}>{lang === "es" ? "Detalle" : "Details"}</Title>
-						<Text>{exp.description}</Text>
+					<Stack align="center" justify="center" ta="center" h={"100%"}>
+						<Text size={"lg"}>{exp.description}</Text>
 						<Image
 							alt={exp.image}
 							src={exp.image}
