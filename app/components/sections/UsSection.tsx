@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from "react";
-import {Copy} from "../../copy";
+import {type Copy} from "../../copy";
+
 import {Stack, Text, Title} from "@mantine/core";
 import Image from "next/image";
 

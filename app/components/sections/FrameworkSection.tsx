@@ -1,6 +1,7 @@
 import React from "react";
-import {Copy} from "../../copy";
-import {Container, Flex, Grid, Stack, Text, Title} from "@mantine/core";
+import {type Copy} from "../../copy";
+
+import {Flex, Stack, Text, Title} from "@mantine/core";
 import Image from "next/image";
 
 export const FrameworkSection = ({text}: {text: Copy}) => {

@@ -1,20 +1,5 @@
-import {
-	ActionIcon,
-	Badge,
-	Button,
-	Container,
-	Flex,
-	Grid,
-	Group,
-	Paper,
-	SimpleGrid,
-	Stack,
-	Text,
-	Textarea,
-	TextInput,
-	Title,
-} from "@mantine/core";
-import {Copy, socialLinks} from "../../copy";
+import {Button, Flex, Group, Stack, Text, Textarea, TextInput, Title} from "@mantine/core";
+import {type Copy, socialLinks} from "../../copy";
 import {IconBrandWhatsapp, IconSend} from "@tabler/icons-react";
 import Image from "next/image";
 

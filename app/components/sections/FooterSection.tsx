@@ -1,6 +1,5 @@
-import {ActionIcon, Container, Group, Text} from "@mantine/core";
-import {Copy} from "../../copy";
-import {IconBrandWhatsapp, IconSend} from "@tabler/icons-react";
+import {Container, Group, Text} from "@mantine/core";
+import {type Copy} from "../../copy";
 
 type FooterProps = {text: Copy};
 

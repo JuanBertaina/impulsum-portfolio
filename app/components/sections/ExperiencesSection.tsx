@@ -1,6 +1,5 @@
 import React from "react";
-import {Copy} from "../../copy";
-import {Stack, Text, Title} from "@mantine/core";
+import {type Copy} from "../../copy";
 import {ExperiencesToggle} from "./ExperiencesToggle";
 
 export const ExperiencesSection = ({text, lang}: {text: Copy; lang: string}) => {

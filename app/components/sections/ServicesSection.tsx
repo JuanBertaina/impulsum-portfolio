@@ -1,6 +1,9 @@
 import {useEffect, useMemo, useRef, useState} from "react";
-import {SectionProps} from "../Sections";
+
 import {Card, Container, Text, Title} from "@mantine/core";
+import {type Copy} from "../../copy";
+
+type SectionProps = {text: Copy};
 
 export function ServicesCarousel({text}: {text: any}) {
 	const services = text.services ?? [];

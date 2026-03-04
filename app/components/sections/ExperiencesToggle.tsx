@@ -1,6 +1,7 @@
 import {Stack, Text, Title} from "@mantine/core";
 import React, {useState} from "react";
-import {Copy} from "../../copy";
+import {type Copy} from "../../copy";
+
 import Image from "next/image";
 type Experience = {
 	title: string;

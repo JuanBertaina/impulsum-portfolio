@@ -7,7 +7,6 @@ import {copy, navOrder} from "./copy";
 import type {Language, SectionId} from "./types";
 import {HeroSection} from "./components/sections/HeroSection";
 import {ServicesSection} from "./components/sections/ServicesSection";
-import {TechnologiesSection} from "./components/sections/TechnologiesSection";
 import {ContactSection} from "./components/sections/ContactSection";
 import {FooterSection} from "./components/sections/FooterSection";
 import {ExperiencesSection} from "./components/sections/ExperiencesSection";
@@ -93,8 +92,6 @@ export default function HomePage() {
 				<ServicesSection text={text} />
 				<ExperiencesSection text={text} lang={lang} />
 				<FrameworkSection text={text} />
-				<TechnologiesSection text={text} />
-				{/* <ClientsSection text={text} /> */}
 				<UsSection text={text} />
 				<ContactSection
 					text={text}

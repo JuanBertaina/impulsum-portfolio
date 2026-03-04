@@ -1,5 +1,5 @@
 import {useMemo, useState} from "react";
-import {Copy, technologyLogos} from "../../copy";
+import {type Copy, technologyLogos} from "../../copy";
 import {ActionIcon, Avatar, Button, Container, Flex, Stack, Text} from "@mantine/core";
 import Image from "next/image";
 import {IconChevronLeft, IconChevronRight} from "@tabler/icons-react";

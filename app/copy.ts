@@ -1,12 +1,3 @@
-import {
-	IconBrandFacebook,
-	IconBrandFacebookFilled,
-	IconBrandLinkedin,
-	IconBrandLinkedinFilled,
-	IconBrandWhatsapp,
-	IconBrandX,
-	IconBrandXFilled,
-} from "@tabler/icons-react";
 import type {Language, SectionId} from "./types";
 
 export const navOrder: SectionId[] = [

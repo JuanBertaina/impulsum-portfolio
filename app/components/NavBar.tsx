@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import {ActionIcon, Button, Container, Drawer, Flex, Group, SegmentedControl, Stack, Text} from "@mantine/core";
+import {ActionIcon, Button, Container, Drawer, Flex, Group, Stack} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
-import {IconMail, IconMenu2, IconX} from "@tabler/icons-react";
-import {navOrder, socialLinks} from "../copy";
+import {IconMenu2, IconX} from "@tabler/icons-react";
+import {navOrder} from "../copy";
 import type {Language, SectionId} from "../types";
 
 type Props = {
@@ -125,21 +125,6 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 							{navLabels[id]}
 						</Button>
 					))}
-					<Group>
-						{socialLinks.map(({href, label, icon: Icon}) => (
-							<ActionIcon
-								key={href}
-								size="lg"
-								variant="light"
-								component="a"
-								href={href}
-								target="_blank"
-								rel="noreferrer"
-								aria-label={label}>
-								<Icon size={18} />
-							</ActionIcon>
-						))}
-					</Group>
 				</Stack>
 			</Drawer>
 		</header>
