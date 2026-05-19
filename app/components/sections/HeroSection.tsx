@@ -53,12 +53,7 @@ export function HeroSection({text, onPrimary, onSecondary}: HeroProps) {
                 ))}
               </Group> */}
 					<div className="logo-tape">
-						<ActionIcon
-							size={"md"}
-							variant="transparent"
-							onClick={prev}
-							aria-label="Anterior"
-							disabled={pageCount <= 1}>
+						<ActionIcon size={"md"} variant="transparent" onClick={prev} aria-label={text.previous} disabled={pageCount <= 1}>
 							<IconChevronLeft size={30} />
 						</ActionIcon>
 						<div className="logo-track paged">
@@ -66,12 +61,7 @@ export function HeroSection({text, onPrimary, onSecondary}: HeroProps) {
 								<div key={`${tech.name}-${idx}`} className="logo-chip">
 									{tech.logo ? (
 										// <Stack className="logo-img" align="center" justify="center" p={0} bg="white">
-										<img
-											src={tech.logo}
-											alt={tech.name}
-											className="logo-chip-image"
-											loading="lazy"
-										/>
+										<img src={tech.logo} alt={tech.name} className="logo-chip-image" loading="lazy" />
 									) : (
 										// </Stack>
 										<Avatar size="md" radius="xl" color="blue">
@@ -84,7 +74,7 @@ export function HeroSection({text, onPrimary, onSecondary}: HeroProps) {
 								</div>
 							))}
 						</div>
-						<ActionIcon size={"md"} variant="transparent" onClick={next} aria-label="Siguiente">
+						<ActionIcon size={"md"} variant="transparent" onClick={next} aria-label={text.next}>
 							<IconChevronRight size={30} />
 						</ActionIcon>
 					</div>

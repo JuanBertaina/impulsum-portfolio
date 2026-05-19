@@ -800,7 +800,11 @@ a {
 
 	.hero-shell {
 		padding: 2.6rem 0 1.8rem;
-		min-height: calc(100vh - var(--header-height));
+		min-height: auto;
+	}
+
+	.hero-shell__inner {
+		min-height: auto;
 	}
 
 	.section-shell {
@@ -822,9 +826,18 @@ a {
 		padding: 0.75rem;
 	}
 
+	.logo-track.paged {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		align-items: center;
+		gap: 0.5rem;
+		overflow: visible;
+	}
+
 	.logo-chip {
-		flex: 0 0 128px;
-		min-width: 128px;
+		flex: initial;
+		min-width: 0;
+		justify-content: center;
 	}
 
 	.experiences-shell {
@@ -850,6 +863,11 @@ a {
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
+		gap: 1.25rem;
+	}
+
+	.contact-intro-copy {
+		flex: initial;
 	}
 
 	.contact-intro img {
@@ -859,6 +877,23 @@ a {
 
 	.contact-form {
 		grid-template-columns: 1fr;
+	}
+
+	.mobile-nav-panel {
+		position: fixed;
+		top: var(--header-height);
+		right: 0;
+		left: 0;
+		z-index: 999;
+		display: block;
+		height: calc(100dvh - var(--header-height));
+		padding: 1rem clamp(1rem, 4vw, 1.5rem);
+		background: rgba(32, 32, 32, 1);
+		overflow-y: auto;
+	}
+
+	.mobile-nav-panel__links .mantine-Button-root {
+		min-height: 48px;
 	}
 }
 
@@ -972,18 +1007,20 @@ a {
 		padding-top: 2.2rem;
 	}
 
+	.logo-tape {
+		gap: 0.25rem;
+		padding: 0.5rem 0;
+		border: 0;
+		background: transparent;
+	}
+
 	.stat-card {
 		width: 100%;
 	}
 
 	.logo-chip {
-		min-width: 120px;
-	}
-
-	.logo-chip {
-		flex-basis: 96px;
-		min-width: 96px;
-		padding-inline: 0.5rem;
+		padding-inline: 0.25rem;
+		border: 0;
 	}
 
 	.logo-chip p {

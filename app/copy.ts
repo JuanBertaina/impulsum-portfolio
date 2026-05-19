@@ -15,7 +15,11 @@ export const socialLinks = [
 		src: "/contact/x.svg",
 	},
 
-	{href: "https://facebook.com/impulsum-latam/", label: "Facebook", src: "/contact/fb.svg"},
+	{
+		href: "https://facebook.com/impulsum-latam/",
+		label: "Facebook",
+		src: "/contact/fb.svg",
+	},
 	{
 		href: "https://www.linkedin.com/company/impulsum-latam/",
 		label: "LinkedIn",
@@ -30,12 +34,24 @@ export const heroStats = [
 ];
 
 export const technologyLogos = [
-	{name: "Microsoft 365", short: "M365", logo: "/hero/logos/microsoft-365.svg"},
+	{
+		name: "Microsoft 365",
+		short: "M365",
+		logo: "/hero/logos/microsoft-365.svg",
+	},
 	{name: "Copilot", short: "CPLT", logo: "/hero/logos/microsoft-copilot.svg"},
 	{name: "Power BI", short: "PBI", logo: "/hero/logos/power-bi.svg"},
-	{name: "Power Automate", short: "PA", logo: "/hero/logos/power-automate.svg"},
+	{
+		name: "Power Automate",
+		short: "PA",
+		logo: "/hero/logos/power-automate.svg",
+	},
 	{name: "Power Apps", short: "PApps", logo: "/hero/logos/power-apps.svg"},
-	{name: "Copilot Studio", short: "C.Studio", logo: "/hero/logos/copilot-studio.svg"},
+	{
+		name: "Copilot Studio",
+		short: "C.Studio",
+		logo: "/hero/logos/copilot-studio.svg",
+	},
 	{name: "Dataverse", short: "DV", logo: "/hero/logos/dataverse.png"},
 	{name: "SharePoint", short: "SP", logo: "/hero/logos/sharepoint.svg"},
 	{name: "Azure", short: "AZ", logo: "/hero/logos/azure.svg"},
@@ -59,13 +75,36 @@ const baseEs = {
 	heroLead: "Datos, automatización e IA aplicados con gobierno y foco en resultados.",
 	heroCTA: "Haz tu próximo salto digital",
 	heroSecondary: "Conoce nuestro enfoque",
+	previous: "Anterior",
+	next: "Siguiente",
+	changeLanguage: "Cambiar idioma",
+	menu: "Menú",
+	navigation: "Navegación",
 	services: [
-		{title: "Impulsum Advisory", description: "Estrategia y gobierno en Microsoft 365 y Copilot."},
-		{title: "Impulsum Agents", description: "Agentes de IA y copilotos adaptados a tus procesos reales."},
-		{title: "Impulsum BI", description: "ETL/ELT, Data Warehouse y analítica con Power BI."},
-		{title: "Impulsum Automate", description: "Orquestación de procesos con Power Automate y Logic Apps."},
-		{title: "Impulsum Apps", description: "Aplicaciones internas con Power Apps, Dataverse y Power Pages."},
-		{title: "Impulsum Academy", description: "Entrenamiento y change management para una cultura future-ready."},
+		{
+			title: "Impulsum Advisory",
+			description: "Estrategia y gobierno en Microsoft 365 y Copilot.",
+		},
+		{
+			title: "Impulsum Agents",
+			description: "Agentes de IA y copilotos adaptados a tus procesos reales.",
+		},
+		{
+			title: "Impulsum BI",
+			description: "ETL/ELT, Data Warehouse y analítica con Power BI.",
+		},
+		{
+			title: "Impulsum Automate",
+			description: "Orquestación de procesos con Power Automate y Logic Apps.",
+		},
+		{
+			title: "Impulsum Apps",
+			description: "Aplicaciones internas con Power Apps, Dataverse y Power Pages.",
+		},
+		{
+			title: "Impulsum Academy",
+			description: "Entrenamiento y change management para una cultura future-ready.",
+		},
 	],
 	experiencesButton: "Conocer más",
 	experiences: [
@@ -108,8 +147,7 @@ const baseEs = {
 			{
 				title: "Pilot + Unify",
 				subtitle: "Desarrollamos un piloto y lo validamos",
-				description:
-					"Definimos arquitectura de datos, automatizaciones y/o agentes inteligentes. Validamos pilotos de alto retorno.",
+				description: "Definimos arquitectura de datos, automatizaciones y/o agentes inteligentes. Validamos pilotos de alto retorno.",
 			},
 			{
 				title: "Launch + Scale",
@@ -236,14 +274,37 @@ const baseEn: typeof baseEs = {
 		"We modernize daily operations by integrating Microsoft 365, Power Platform, Copilot, data, and automation to reach real efficiency and measurable results.",
 	heroCTA: "Impulsum your next digital leap",
 	heroSecondary: "See our approach",
+	previous: "Previous",
+	next: "Next",
+	changeLanguage: "Change language",
+	menu: "Menu",
+	navigation: "Navigation",
 	// servicesIntro: "Microsoft-first team from Córdoba with global reach—shipping in weeks, not months.",
 	services: [
-		{title: "Impulsum Advisory", description: "Strategy and governance across Microsoft 365 and Copilot."},
-		{title: "Impulsum Agents", description: "AI agents and copilots tuned to your real processes."},
-		{title: "Impulsum BI", description: "ETL/ELT, Data Warehouse, and analytics with Power BI."},
-		{title: "Impulsum Automate", description: "Process orchestration with Power Automate and Logic Apps."},
-		{title: "Impulsum Apps", description: "Internal apps on Power Apps, Dataverse, and Power Pages."},
-		{title: "Impulsum Academy", description: "Training and change management for a future-ready culture."},
+		{
+			title: "Impulsum Advisory",
+			description: "Strategy and governance across Microsoft 365 and Copilot.",
+		},
+		{
+			title: "Impulsum Agents",
+			description: "AI agents and copilots tuned to your real processes.",
+		},
+		{
+			title: "Impulsum BI",
+			description: "ETL/ELT, Data Warehouse, and analytics with Power BI.",
+		},
+		{
+			title: "Impulsum Automate",
+			description: "Process orchestration with Power Automate and Logic Apps.",
+		},
+		{
+			title: "Impulsum Apps",
+			description: "Internal apps on Power Apps, Dataverse, and Power Pages.",
+		},
+		{
+			title: "Impulsum Academy",
+			description: "Training and change management for a future-ready culture.",
+		},
 	],
 	experiencesButton: "Tell me more",
 	experiences: [
@@ -274,53 +335,51 @@ const baseEn: typeof baseEs = {
 	],
 	framework: {
 		title: "Impulsum Framework",
-		subtitle: "De datos a impacto, paso a paso",
-		description:
-			"Un método probado para diseñar, validar y escalar soluciones de datos, automatización e IA, con foco en resultados reales y medibles.",
+		subtitle: "From data to impact, step by step",
+		description: "A proven method to design, validate, and scale data, automation, and AI solutions focused on real, measurable outcomes.",
 		parts: [
 			{
 				title: "Insight + Model",
-				subtitle: "Entendemos dónde estás y dónde generar impacto",
-				description: "Diagnosticamos procesos, datos y madurez tecnológica para detectar oportunidades de alto valor.",
+				subtitle: "We understand where you are and where to create impact",
+				description: "We assess processes, data, and technology maturity to identify high-value opportunities.",
 			},
 			{
 				title: "Pilot + Unify",
-				subtitle: "Desarrollamos un piloto y lo validamos",
-				description:
-					"Definimos arquitectura de datos, automatizaciones y/o agentes inteligentes. Validamos pilotos de alto retorno.",
+				subtitle: "We build and validate a pilot",
+				description: "We define data architecture, automations, and/or intelligent agents. We validate high-return pilots.",
 			},
 			{
 				title: "Launch + Scale",
-				subtitle: "Desplegamos en producción y expandimos el impacto.",
-				description: "Desplegamos la solución en producción alineado con buenas prácticas de gobernanza y escala.",
+				subtitle: "We launch in production and expand the impact.",
+				description: "We deploy the solution to production aligned with governance and scale best practices.",
 			},
 			{
 				title: "Upskill + Measure",
-				subtitle: "Escalamos y mejoramos continuamente",
-				description: "Extendemos la solución, capacitamos equipos y medimos impacto para evolucionar sin fricción.",
+				subtitle: "We scale and improve continuously",
+				description: "We extend the solution, train teams, and measure impact so it evolves without friction.",
 			},
 		],
-		question: "¿Qué garantiza el ",
+		question: "What does the ",
 		answer: [
 			{
 				logo: "/framework/logo1.svg",
-				description: "Resultados medibles desde el inicio",
+				description: "Measurable results from the start",
 			},
 			{
 				logo: "/framework/logo2.svg",
-				description: "Soluciones seguras, escalables y gobernadas",
+				description: "Secure, scalable, and governed solutions",
 			},
 			{
 				logo: "/framework/logo3.svg",
-				description: "Integración con tu ecosistema actual",
+				description: "Integration with your current ecosystem",
 			},
 			{
 				logo: "/framework/logo4.svg",
-				description: "Adopción real por parte de los equipos",
+				description: "Real adoption by teams",
 			},
 			{
 				logo: "/framework/logo5.svg",
-				description: "Mejora continua basada en datos",
+				description: "Continuous improvement based on data",
 			},
 		],
 	},
@@ -369,9 +428,9 @@ const baseEn: typeof baseEs = {
 	// 	},
 	// ],
 	us: {
-		title: "Orquestamos tecnología para que tu negocio avance.",
+		title: "We orchestrate technology so your business moves forward.",
 		description:
-			"Transformamos datos y tecnología en resultados concretos. Acompañamos a las organizaciones en la integración de datos, automatización y agentes de  inteligencia artificial dentro de sistemas simples, gobernados y alineados al negocio. Diseñamos e implementamos soluciones que elevan la productividad y aceleran la toma de decisiones, apoyándonos en las plataformas tecnológicas más confiables del mercado, especializados en el universo Microsoft.",
+			"We turn data and technology into concrete results. We help organizations integrate data, automation, and artificial intelligence agents into simple, governed systems aligned with the business. We design and implement solutions that increase productivity and accelerate decision-making, relying on the market's most trusted technology platforms, with deep specialization in the Microsoft ecosystem.",
 	},
 	contact: {
 		title: "Ready for your next leap?",

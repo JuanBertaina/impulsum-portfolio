@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {ActionIcon, Button, Container, Drawer, Group, Stack} from "@mantine/core";
+import {ActionIcon, Button, Container, Group, Stack} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
 import {IconMenu2, IconX} from "@tabler/icons-react";
 import {navOrder} from "../copy";
@@ -43,12 +43,23 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 							variant={"subtle"}
 							style={
 								activeNav === id
-									? {borderBottom: "2px solid ", fontWeight: 900, borderRadius: 0, color: "rgba(245, 247, 250, 1)"}
-									: {borderBottom: "0px solid", fontWeight: 500, borderRadius: 0, color: "rgba(245, 247, 250, 1)"}
+									? {
+											borderBottom: "2px solid ",
+											fontWeight: 900,
+											borderRadius: 0,
+											color: "rgba(245, 247, 250, 1)",
+										}
+									: {
+											borderBottom: "0px solid",
+											fontWeight: 500,
+											borderRadius: 0,
+											color: "rgba(245, 247, 250, 1)",
+										}
 							}
 							size="sm"
 							className="nav-link"
-							onClick={() => handleNav(id)}>
+							onClick={() => handleNav(id)}
+						>
 							{navLabels[id]}
 						</Button>
 					))}
@@ -60,22 +71,25 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 						color="rgba(42, 46, 52, 1)"
 						size={isMobile ? "xs" : "sm"}
 						onClick={() => handleNav("contact")}
-						className="contact-btn">
+						className="contact-btn"
+					>
 						{navLabels.contact}
 					</Button>
-					<div className={`language-switch language-switch--${lang}`} aria-label="Cambiar idioma">
+					<div className={`language-switch language-switch--${lang}`} aria-label={lang === "es" ? "Cambiar idioma" : "Change language"}>
 						<button
 							type="button"
 							className={`language-switch__option ${lang === "es" ? "is-active" : ""}`}
 							onClick={() => setLang("es")}
-							aria-pressed={lang === "es"}>
+							aria-pressed={lang === "es"}
+						>
 							<Image src="/navbar/flags/ar-d.svg" alt="Español" height={20} width={28} loading="lazy" />
 						</button>
 						<button
 							type="button"
 							className={`language-switch__option ${lang === "en" ? "is-active" : ""}`}
 							onClick={() => setLang("en")}
-							aria-pressed={lang === "en"}>
+							aria-pressed={lang === "en"}
+						>
 							<Image src="/navbar/flags/us-d.svg" alt="English" height={20} width={28} loading="lazy" />
 						</button>
 					</div>
@@ -83,28 +97,25 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 						variant="outline"
 						size={isMobile ? "md" : "lg"}
 						className="mobile-only"
-						aria-label="Menú"
-						onClick={toggle}>
+						aria-label={lang === "es" ? "Menú" : "Menu"}
+						onClick={toggle}
+					>
 						{opened ? <IconX size={20} /> : <IconMenu2 size={20} />}
 					</ActionIcon>
 				</Group>
 			</Container>
 
-			<Drawer
-				opened={opened && Boolean(isMobile)}
-				onClose={close}
-				padding="md"
-				size="100%"
-				title="Navegación"
-				className="mobile-only">
-				<Stack gap="sm">
-					{navOrder.map((id) => (
-						<Button key={id} variant={activeNav === id ? "filled" : "light"} onClick={() => handleNav(id)}>
-							{navLabels[id]}
-						</Button>
-					))}
-				</Stack>
-			</Drawer>
+			{opened ? (
+				<nav className="mobile-nav-panel mobile-only" aria-label={lang === "es" ? "Navegación" : "Navigation"}>
+					<Stack gap="sm" className="mobile-nav-panel__links">
+						{navOrder.map((id) => (
+							<Button key={id} variant={activeNav === id ? "filled" : "light"} onClick={() => handleNav(id)}>
+								{navLabels[id]}
+							</Button>
+						))}
+					</Stack>
+				</nav>
+			) : null}
 		</header>
 	);
 }
