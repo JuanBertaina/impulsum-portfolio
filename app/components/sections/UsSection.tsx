@@ -50,10 +50,10 @@ export const UsSection = ({text}: {text: Copy}) => {
 
 	return (
 		<section className="us-shell" id="us">
-			<Stack align="center" p={"lg"}>
-				<Title w="40%">{text.us.title}</Title>
+			<Stack align="center" p={"lg"} className="us-content">
+				<Title>{text.us.title}</Title>
 
-				<Text w="60%">{text.us.description}</Text>
+				<Text>{text.us.description}</Text>
 
 				<Image
 					ref={imgRef}

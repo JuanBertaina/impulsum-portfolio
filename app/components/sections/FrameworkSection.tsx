@@ -47,7 +47,7 @@ export const FrameworkSection = ({text}: {text: Copy}) => {
 						{"Impulsum Framework?"}
 					</Title>
 				</Flex>
-				<Flex w={"100%"} justify={"space-evenly"}>
+				<Flex className="framework-answer-list">
 					{text.framework.answer.map((ans, i) => {
 						return (
 							<Stack key={i} align={"center"} gap={"xs"}>

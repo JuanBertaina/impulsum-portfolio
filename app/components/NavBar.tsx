@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {ActionIcon, Button, Container, Drawer, Flex, Group, Stack} from "@mantine/core";
+import {ActionIcon, Button, Container, Drawer, Group, Stack} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
 import {IconMenu2, IconX} from "@tabler/icons-react";
 import {navOrder} from "../copy";
@@ -33,8 +33,8 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 					onClick={() => handleNav("hero")}
 					width={168}
 					height={43}
-					style={{cursor: "pointer", userSelect: "none"}}
-					loading="lazy"
+					style={{cursor: "pointer", userSelect: "none", height: "auto"}}
+					priority
 				/>
 				<Group gap="xs" className="desktop-nav">
 					{navOrder.map((id) => (
@@ -63,44 +63,22 @@ export function NavBar({lang, setLang, activeNav, onNavClick, navLabels, isMobil
 						className="contact-btn">
 						{navLabels.contact}
 					</Button>
-					<Flex
-						h={27}
-						w={83}
-						bg={"white"}
-						align="stretch"
-						p={0}
-						m={0}
-						justify="space-between"
-						style={{
-							borderRadius: "4px",
-						}}>
-						<Image
+					<div className={`language-switch language-switch--${lang}`} aria-label="Cambiar idioma">
+						<button
+							type="button"
+							className={`language-switch__option ${lang === "es" ? "is-active" : ""}`}
 							onClick={() => setLang("es")}
-							src={"/navbar/flags/ar-d.svg"}
-							alt="espanol"
-							height={27}
-							width={36}
-							style={
-								lang === "en"
-									? {cursor: "pointer", opacity: "25%", userSelect: "none"}
-									: {cursor: "pointer", opacity: "100%", userSelect: "none"}
-							}
-							loading="lazy"
-						/>
-						<Image
+							aria-pressed={lang === "es"}>
+							<Image src="/navbar/flags/ar-d.svg" alt="Español" height={20} width={28} loading="lazy" />
+						</button>
+						<button
+							type="button"
+							className={`language-switch__option ${lang === "en" ? "is-active" : ""}`}
 							onClick={() => setLang("en")}
-							src={"/navbar/flags/us-d.svg"}
-							alt="english"
-							height={27}
-							width={36}
-							style={
-								lang === "es"
-									? {cursor: "pointer", opacity: "25%", userSelect: "none"}
-									: {cursor: "pointer", opacity: "100%", userSelect: "none"}
-							}
-							loading="lazy"
-						/>
-					</Flex>
+							aria-pressed={lang === "en"}>
+							<Image src="/navbar/flags/us-d.svg" alt="English" height={20} width={28} loading="lazy" />
+						</button>
+					</div>
 					<ActionIcon
 						variant="outline"
 						size={isMobile ? "md" : "lg"}

@@ -15,9 +15,10 @@ import {UsSection} from "./components/sections/UsSection";
 
 export default function HomePage() {
 	const [lang, setLang] = useState<Language>("es");
-	const [feedback, setFeedback] = useState("");
+	const [feedback] = useState("");
 	const [activeNav, setActiveNav] = useState<SectionId>("services");
 	const contactFormRef = useRef<HTMLFormElement>(null);
+	const navScrollLockRef = useRef<number | null>(null);
 	const isMobile = useMediaQuery("(max-width: 900px)");
 	const text = useMemo(() => copy[lang], [lang]);
 
@@ -33,6 +34,40 @@ export default function HomePage() {
 		syncHash();
 		window.addEventListener("hashchange", syncHash);
 		return () => window.removeEventListener("hashchange", syncHash);
+	}, []);
+
+	useEffect(() => {
+		let rafId: number | null = null;
+
+		const syncActiveSection = () => {
+			rafId = null;
+			if (navScrollLockRef.current !== null) return;
+			const headerHeight = document.querySelector(".glass-header")?.getBoundingClientRect().height ?? 0;
+			const probeY = headerHeight + 32;
+			const current = navOrder.find((sectionId) => {
+				const section = document.getElementById(sectionId);
+				if (!section) return false;
+				const rect = section.getBoundingClientRect();
+				return rect.top <= probeY && rect.bottom > probeY;
+			});
+
+			if (current) setActiveNav(current);
+		};
+
+		const scheduleSync = () => {
+			if (rafId !== null) return;
+			rafId = window.requestAnimationFrame(syncActiveSection);
+		};
+
+		syncActiveSection();
+		window.addEventListener("scroll", scheduleSync, {passive: true});
+		window.addEventListener("resize", scheduleSync);
+
+		return () => {
+			window.removeEventListener("scroll", scheduleSync);
+			window.removeEventListener("resize", scheduleSync);
+			if (rafId !== null) window.cancelAnimationFrame(rafId);
+		};
 	}, []);
 
 	useEffect(() => {
@@ -52,7 +87,13 @@ export default function HomePage() {
 	const scrollTo = (targetId: SectionId) => {
 		const target = document.getElementById(targetId);
 		if (target) {
-			target.scrollIntoView({behavior: "smooth", block: "start"});
+			if (navScrollLockRef.current !== null) window.clearTimeout(navScrollLockRef.current);
+			navScrollLockRef.current = window.setTimeout(() => {
+				navScrollLockRef.current = null;
+			}, 900);
+			const headerHeight = document.querySelector(".glass-header")?.getBoundingClientRect().height ?? 0;
+			const targetTop = target.offsetTop - headerHeight;
+			window.scrollTo({top: Math.max(0, targetTop), behavior: "smooth"});
 			history.replaceState(null, "", `#${targetId}`);
 		}
 		setActiveNav(targetId);

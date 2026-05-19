@@ -1,7 +1,6 @@
 import {useMemo, useState} from "react";
 import {type Copy, technologyLogos} from "../../copy";
 import {ActionIcon, Avatar, Button, Container, Flex, Stack, Text} from "@mantine/core";
-import Image from "next/image";
 import {IconChevronLeft, IconChevronRight} from "@tabler/icons-react";
 
 type HeroProps = {
@@ -30,16 +29,16 @@ export function HeroSection({text, onPrimary, onSecondary}: HeroProps) {
 	return (
 		<section className="hero-shell reveal" id="hero">
 			<Container size="xl" className="hero-shell__inner">
-				<Stack gap={"lg"} align="center" justify="center" maw={"60%"}>
+				<Stack gap={"lg"} align="center" justify="center" className="hero-content">
 					<h1 className="hero-h1">{text.heroTitle}</h1>
 					<Text size="md" ta={"center"}>
 						{text.heroLead}
 					</Text>
 					<Flex justify={"center"} gap="sm" wrap="wrap" w={"100%"}>
-						<Button size="lg" w={"35%"} className="hero-primary-btn" onClick={onPrimary}>
+						<Button size="lg" className="hero-primary-btn" onClick={onPrimary}>
 							{text.heroCTA}
 						</Button>
-						<Button size="lg" w={"35%"} className="hero-secondary-btn" onClick={onSecondary}>
+						<Button size="lg" className="hero-secondary-btn" onClick={onSecondary}>
 							{text.heroSecondary}
 						</Button>
 					</Flex>
@@ -67,12 +66,10 @@ export function HeroSection({text, onPrimary, onSecondary}: HeroProps) {
 								<div key={`${tech.name}-${idx}`} className="logo-chip">
 									{tech.logo ? (
 										// <Stack className="logo-img" align="center" justify="center" p={0} bg="white">
-										<Image
+										<img
 											src={tech.logo}
 											alt={tech.name}
-											width={44}
-											height={44}
-											style={{objectFit: "contain", userSelect: "none"}}
+											className="logo-chip-image"
 											loading="lazy"
 										/>
 									) : (

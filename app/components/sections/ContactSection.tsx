@@ -14,11 +14,11 @@ type ContactProps = {
 export function ContactSection({text, onSubmit, onWhatsapp, feedback, formRef}: ContactProps) {
 	return (
 		<section id="contact" className="contact-shell reveal">
-			<Stack align="center" pt={"xl"}>
-				<Flex align={"center"} gap={"xl"}>
-					<Stack>
+			<Stack align="center" pt={"xl"} className="contact-content">
+				<Flex align={"center"} gap={"xl"} className="contact-intro">
+					<Stack className="contact-intro-copy">
 						<Title c={"rgba(0,211,223,1)"}>{text.contact.title.toLocaleUpperCase()}</Title>
-						<Text size="lg" w={"70%"} c={"rgba(245, 247, 250, 1)"}>
+						<Text size="lg" c={"rgba(245, 247, 250, 1)"}>
 							{text.contact.description}
 						</Text>
 					</Stack>
@@ -26,20 +26,14 @@ export function ContactSection({text, onSubmit, onWhatsapp, feedback, formRef}: 
 				</Flex>
 
 				<form
-					style={{
-						display: "flex",
-						flexDirection: "row",
-						width: "100%",
-						alignItems: "stretch",
-						justifyContent: "space-between",
-					}}
+					className="contact-form"
 					ref={formRef}
 					onSubmit={onSubmit}>
-					<Stack gap={"4rem"} w={"50%"} p={"lg"} justify="stretch">
+					<Stack className="contact-form-column" justify="stretch">
 						<Flex className={"form-input"}>
 							<Text>{text.contact.fields.name}*</Text>
 							<TextInput
-								w={"70%"}
+								className="form-field"
 								variant="unstyled"
 								name="name"
 								required
@@ -48,12 +42,17 @@ export function ContactSection({text, onSubmit, onWhatsapp, feedback, formRef}: 
 						</Flex>
 						<Flex className={"form-input"}>
 							<Text>{text.contact.fields.company}</Text>
-							<TextInput w={"70%"} variant="unstyled" name="company" placeholder={text.contact.placeholder.company} />
+							<TextInput
+								className="form-field"
+								variant="unstyled"
+								name="company"
+								placeholder={text.contact.placeholder.company}
+							/>
 						</Flex>
 						<Flex className={"form-input"}>
 							<Text>{text.contact.fields.email}*</Text>
 							<TextInput
-								w={"70%"}
+								className="form-field"
 								variant="unstyled"
 								name="email"
 								type="email"
@@ -63,10 +62,10 @@ export function ContactSection({text, onSubmit, onWhatsapp, feedback, formRef}: 
 						</Flex>
 						<Flex className={"form-input"}>
 							<Text>{text.contact.fields.tel}*</Text>
-							<TextInput w={"70%"} variant="unstyled" name="phone" required placeholder="+54..." />
+							<TextInput className="form-field" variant="unstyled" name="phone" required placeholder="+54..." />
 						</Flex>
 					</Stack>
-					<Stack p={"lg"} w={"50%"} justify="stretch">
+					<Stack className="contact-form-column" justify="stretch">
 						<Stack className="form-input" h={"100%"}>
 							<Text w={"100%"} ta={"start"}>
 								{text.contact.fields.message}*
